@@ -3,7 +3,13 @@
   "theme": "mint",
   "name": "Pulsedive Docs",
   "fonts": {
+    "family": "Varela Round",
+    "heading": {
       "family": "Montserrat"
+    },
+    "body": {
+      "family": "Varela Round"
+    }
   },
   "colors": {
     "primary": "#006699",
