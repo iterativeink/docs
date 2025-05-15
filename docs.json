@@ -2,6 +2,9 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
   "name": "Pulsedive Docs",
+  "fonts": {
+      "family": "Montserrat"
+  },
   "colors": {
     "primary": "#006699",
     "light": "#3094c2",
