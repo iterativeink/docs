@@ -26,51 +26,57 @@
             "group": "Intro to Pulsedive",
             "pages": [
               "intro-pulsedive/pulsedive",
-              "intro-pulsedive/risk"
+              "intro-pulsedive/risk",
+              {
+                "group": "Testing",
+                "pages": [
+                  "1-2-3"
+                ]
+              }
             ]
           },
           {
             "group": "Components",
             "pages": [
-              "Dashboard",
-              "API"
+              "components/dashboard",
+              "components/api"
             ]
           },
           {
             "group": "Services",
             "pages": [
-              "Explore",
-              "Analyze",
-              "Feed",
-              "Export",
-              "Add-On",
-              "Integrations"
+              "services/explore",
+              "services/analyze",
+              "services/feed",
+              "services/export",
+              "services/add-on",
+              "services/integrations"
             ]
           },
           {
             "group": "Plans/Pricing",
             "pages": [
-              "API Free / Add-On",
-              "Pro: Non-Commercial",
-              "Team: Commercial",
-              "Business",
-              "Custom",
-              "Light",
-              "Standard",
-              "Complete",
-              "Enterprise"
+              "plans_pricing/api-free_add-on",
+              "plans_pricing/pro_non-commercial",
+              "plans_pricing/team_commercial",
+              "plans_pricing/business",
+              "plans_pricing/custom",
+              "plans_pricing/light",
+              "plans_pricing/standard",
+              "plans_pricing/complete",
+              "plans_pricing/enterprise"
             ]
           },
           {
             "group": "FAQs",
             "pages": [
-              "PLACEHOLDER"
+              "placeholder"
             ]
           },
           {
             "group": "Data Privacy",
             "pages": [
-              "PLACEHOLDER"
+              "placeholder"
             ]
           }
         ]
@@ -81,55 +87,55 @@
           {
             "group": "Research Existing Threats and Indicators",
             "pages": [
-              "What are Threats and Indicators?",
-              "Interpret Threat and Indicator profiles"
+              "research-existing-threats-indicators/what-are-threats-and-indicators",
+              "research-existing-threats-indicators/interpret-threat-and-indicator-profiles"
             ]
           },
           {
             "group": "Query Data",
             "pages": [
-              "Query Language",
-              "Enrich an Indicator",
-              "Enrich in Bulk",
-              "Research a Threat"
+              "query-data/query-language",
+              "query-data/enrich-an-indicator",
+              "query-data/enrich-in-bulk",
+              "query-data/research-a-threat"
             ]
           },
           {
             "group": "Export",
             "pages": [
-              "What is a feed?",
-              "Download Sample Data",
-              "Export to CSV",
-              "Export to STIX/TAXII",
-              "Export in Bulk"
+              "export/what-is-a-feed",
+              "export/download-sample-data",
+              "export/export-to-csv",
+              "export/export-to-stix_taxii",
+              "export/export-in-bulk"
             ]
           },
           {
             "group": "Enrich and Investigate Indicators",
             "pages": [
-              "Submit Indicators with Analyze Tool",
-              "Interpret Analyze Results"
+              "enrich-investigate-indicators/submit-indicators-with-analyze-tool",
+              "enrich-investigate-indicators/interpret-analyze-results"
             ]
           },
           {
             "group": "Integrations",
             "pages": [
-              "PLACEHOLDER"
+              "placeholder"
             ]
           },
           {
             "group": "Add-On",
             "pages": [
-              "PLACEHOLDER"
+              "placeholder"
             ]
           },
           {
             "group": "Manage Dashboard Account",
             "pages": [
-              "Change Email",
-              "Change Password",
-              "Download Data",
-              "Delete Account"
+              "manage-dashboard-account/change-email",
+              "manage-dashboard-account/change-password",
+              "manage-dashboard-account/download-data",
+              "manage-dashboard-account/delete-account"
             ]
           }
         ]
@@ -140,31 +146,31 @@
           {
             "group": "Authorization",
             "pages": [
-              "PLACEHOLDER"
+              "placeholder"
             ]
           },
           {
             "group": "Rate Limiting",
             "pages": [
-              "PLADCEHOLDER"
+              "placeholder"
             ]
           },
           {
             "group": "Pagination",
             "pages": [
-              "PLACEHOLDER"
+              "placeholder"
             ]
           },
           {
             "group": "Endpoints",
             "pages": [
-              "PLACEHOLDER"
+              "placeholder"
             ]
           },
           {
             "group": "Recipes",
             "pages": [
-              "PLACEHOLDER"
+              "placeholder"
             ]
           }
         ]
@@ -175,7 +181,7 @@
           {
             "group": "Community",
             "pages": [
-              "PLACEHOLDER"
+              "placeholder"
             ]
           }
         ]
@@ -186,25 +192,25 @@
           {
             "group": "Common Issues",
             "pages": [
-              "PLACEHOLDER"
+              "placeholder"
             ]
           },
           {
             "group": "Support",
             "pages": [
-              "PLACEHOLDER"
+              "placeholder"
             ]
           },
           {
             "group": "Community",
             "pages": [
-              "PLACEHOLDER"
+              "placeholder"
             ]
           },
           {
             "group": "Product Lifecycle",
             "pages": [
-              "Recommended Migrations"
+              "product-lifecycle/recommended-migrations"
             ]
           }
         ]
