@@ -146,7 +146,7 @@
           {
             "group": "Authorization",
             "pages": [
-              "placeholder"
+              "autho"
             ]
           },
           {
@@ -181,7 +181,7 @@
           {
             "group": "Community",
             "pages": [
-              "placeholder"
+              "comm"
             ]
           }
         ]
@@ -192,7 +192,7 @@
           {
             "group": "Common Issues",
             "pages": [
-              "placeholder"
+              "issue"
             ]
           },
           {
