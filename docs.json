@@ -20,45 +20,193 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Get Started",
         "groups": [
           {
-            "group": "Get Started",
+            "group": "Intro to Pulsedive",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
+              "What is Pulsedive?",
+              "Why Pulsedive?",
+              "Where do we get our info?",
+              "How do we evaluate risk?"
             ]
           },
           {
-            "group": "Essentials",
+            "group": "Components",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/settings",
-              "essentials/navigation",
-              "essentials/reusable-snippets"
+              "Dashboard",
+              "API"
+            ]
+          },
+          {
+            "group": "Services",
+            "pages": [
+              "Explore",
+              "Analyze",
+              "Feed",
+              "Export",
+              "Add-On",
+              "Integrations"
+            ]
+          },
+          {
+            "group": "Plans/Pricing",
+            "pages": [
+              "API Free / Add-On",
+              "Pro: Non-Commercial",
+              "Team: Commercial",
+              "Business",
+              "Custom",
+              "Light",
+              "Standard",
+              "Complete",
+              "Enterprise"
+            ]
+          },
+          {
+            "group": "FAQs",
+            "pages": [
+              "PLACEHOLDER"
+            ]
+          },
+          {
+            "group": "Data Privacy",
+            "pages": [
+              "PLACEHOLDER"
             ]
           }
         ]
-      },
+      }, 
+      {
+        "tab": "Guides",
+        "groups": [
+          {
+            "group": "Research Existing Threats and Indicators",
+            "pages": [
+              "What are Threats and Indicators?",
+              "Interpret Threat and Indicator profiles"
+            ]
+          },
+          {
+            "group": "Query Data",
+            "pages": [
+              "Query Language",
+              "Enrich an Indicator",
+              "Enrich in Bulk",
+              "Research a Threat"
+            ]
+          },
+          {
+            "group": "Export",
+            "pages": [
+              "What is a feed?",
+              "Download Sample Data",
+              "Export to CSV",
+              "Export to STIX/TAXII",
+              "Export in Bulk"
+            ]
+          },
+          {
+            "group": "Enrich and Investigate Indicators",
+            "pages": [
+              "Submit Indicators with Analyze Tool",
+              "Interpret Analyze Results"
+            ]
+          },
+          {
+            "group": "Integrations",
+            "pages": [
+              "PLACEHOLDER"
+            ]
+          },
+          {
+            "group": "Add-On",
+            "pages": [
+              "PLACEHOLDER"
+            ]
+          },
+          {
+            "group": "Manage Dashboard Account",
+            "pages": [
+              "Change Email",
+              "Change Password",
+              "Download Data",
+              "Delete Account"
+            ]
+          }
+        ]
+      },        
       {
         "tab": "API Reference",
         "groups": [
           {
-            "group": "API Documentation",
+            "group": "Authorization",
             "pages": [
-              "api-reference/introduction"
+              "PLACEHOLDER"
             ]
           },
           {
-            "group": "Endpoint Examples",
+            "group": "Rate Limiting",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "PLADCEHOLDER"
+            ]
+          },
+          {
+            "group": "Pagination",
+            "pages": [
+              "PLACEHOLDER"
+            ]
+          },
+          {
+            "group": "Endpoints",
+            "pages": [
+              "PLACEHOLDER"
+            ]
+          },
+          {
+            "group": "Recipes",
+            "pages": [
+              "PLACEHOLDER"
+            ]
+          }
+        ]
+      }
+      {
+        "tab": "SDKs",
+        "groups": [
+          {
+            "group": "Community",
+            "pages": [
+              "PLACEHOLDER"
+            ]
+          }
+        ]
+      }
+      {
+        "tab": "Troubleshooting",
+        "groups": [
+          {
+            "group": "Common Issues",
+            "pages": [
+              "PLACEHOLDER"
+            ]
+          },
+          {
+            "group": "Support",
+            "pages": [
+              "PLACEHOLDER"
+            ]
+          },
+          {
+            "group": "Community",
+            "pages": [
+              "PLACEHOLDER"
+            ]
+          },
+          {
+            "group": "Product Lifecycle",
+            "pages": [
+              "Recommended Migrations"
             ]
           }
         ]
