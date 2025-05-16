@@ -25,10 +25,8 @@
           {
             "group": "Intro to Pulsedive",
             "pages": [
-              "What is Pulsedive?",
-              "Why Pulsedive?",
-              "Where do we get our info?",
-              "How do we evaluate risk?"
+              "intro-pulsedive/pulsedive",
+              "intro-pulsedive/risk"
             ]
           },
           {
