@@ -190,6 +190,12 @@
         "tab": "Troubleshooting",
         "groups": [
           {
+            "group": "Support",
+            "pages": [
+              "troubleshooting/support"
+            ]
+          },          
+          {
             "group": "Common Issues",
             "pages": [
               "troubleshooting/common-issues"
@@ -227,7 +233,7 @@
     "links": [
       {
         "label": "Support",
-        "href": "support"
+        "href": "mailto:support@pulsedive.com"
       }
     ],
     "primary": {
