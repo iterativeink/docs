@@ -5,9 +5,12 @@ html {
 h1, h2, h3, h4, h5, h6 {
   font-family: "Montserrat", sans-serif;
 }
-#relative {
+#navbar {
   background: "#C2DCED"
 }
 #sidebar {
   background: "#D7DFE3"
+}
+#topbar-cta-button {
+  background: "#C2DCED"
 }
