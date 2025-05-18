@@ -1,14 +1,14 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Pulsedive Docs",
+  "name": "Pulsedive Documentation",
   "fonts": {
-    "family": "Varela Round",
+    "family": "Varela Round, sans-serif",
     "heading": {
-      "family": "Montserrat"
+      "family": "Montserrat, sans-serif"
     },
     "body": {
-      "family": "Varela Round"
+      "family": "Varela Round, sans-serif"
     }
   },
   "colors": {
@@ -16,7 +16,7 @@
     "light": "#3094c2",
     "dark": "#48484a"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "https://pulsedive.com/img/favicon.png",
   "navigation": {
     "tabs": [
       {
@@ -192,25 +192,13 @@
           {
             "group": "Common Issues",
             "pages": [
-              "issue"
-            ]
-          },
-          {
-            "group": "Support",
-            "pages": [
-              "placeholder"
-            ]
-          },
-          {
-            "group": "Community",
-            "pages": [
-              "placeholder"
+              "troubleshooting/common-issues"
             ]
           },
           {
             "group": "Product Lifecycle",
             "pages": [
-              "product-lifecycle/recommended-migrations"
+              "troubleshooting/product-lifecycle/recommended-migrations"
             ]
           }
         ]
@@ -219,18 +207,13 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
           "anchor": "Community",
-          "href": "https://mintlify.com/community",
+          "href": "https://pulsedive.slack.com/",
           "icon": "slack"
         },
         {
           "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
+          "href": "https://blog.pulsedive.com/",
           "icon": "newspaper"
         }
       ]
@@ -244,20 +227,20 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "support"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "href": "https://pulsedive.com/dashboard/"
     }
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "twitter": "https://twitter.com/pulsedive",
+      "github": "https://github.com/pulsedive",
+      "linkedin": "https://www.linkedin.com/company/pulsedive/"
     }
   }
 }
