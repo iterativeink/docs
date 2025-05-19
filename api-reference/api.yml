@@ -1,7 +1,12 @@
-openapi: "3.1.0"
+openapi: 3.1.0
 info:
-  title: "Pulsedive API Reference"
+  title: Pulsedive API Reference
   version: "1.0.0"
+  description: |
+    The Pulsedive API allows users to lookup known indicators and threats, enrich and investigate indicators, query Pulsedive data, and automate workflows.
+    If an API key is provided, the rate limit is higher.
   license:
     name: "Apache 2.0"
     url: "https://www.apache.org/licenses/LICENSE-2.0.html"
+servers:
+  - url: https://www.pulsedive.com
