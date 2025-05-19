@@ -439,12 +439,15 @@ components:
               username:
                 type: string
                 description: Username of the comment's author.
+                example: sherd
               title:
                 type: string
                 description: Job title of the comment's author.
+                example: Founder
               comment:
                 type: string
                 description: Text content of the comment.
+                example: Have you seen our Pro tier? 😎
               stamp_added:
                 type: string
                 format: sql-date-time
@@ -541,41 +544,79 @@ components:
                 ++abuse:
                   type: string
                   description: Email address to report abuse related to the domain.
+                  example: abuse-complaints@squarespace.com
                 ++email:
                   type: array
                   description: List of email addresses associated with the domain registration. May include technical, administrative, or contact emails.
                   items:
                     type: string
-                    description: xx
+                    example: username@organization.org
                 ++expires:
                   type: string
-                  format: date-time
-                  description: Date when the domain's registration is set to expire, possibly including time and timezone. Normalizes the ISO date in registrar registration expiration date to YYYY-MM-DD HH:MM:SS.
+                  format: sql-date-time
+                  pattern: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$'
+                  description: |
+                    Timestamp when the domain's registration is set to expire.
+
+                    Date and time in 'YYYY-MM-DD HH:MM:SS' format. Time is in 24-hour format with no timezone.
+                    Normalizes the ISO date in `registrar registration expiration date`.
+                example: '2025-05-19 14:23:45'
                 ++gdpr:
                   type: string
-                  description: Indicates whether the domain's WHOIS information is subject to General Data Protection Regulation (GDPR) restrictions.
+                  description: |
+                    Indicates whether the domain's WHOIS data is restricted under the General Data Protection Regulation (GDPR).
+
+                    When set to `1`, the data is subject to GDPR restrictions.
+                    When set to `0`, the data is not restricted by GDPR.
+                  enum:
+                  - 0
+                  - 1
                 ++phone:
                   type: array
                   description: List of phone numbers associated with the domain registration. May include technical, administrative, or contact phone numbers.
-                ++privacy:
-                  type: string
-                  description: Indicates whether WHOIS privacy protection is enabled.
-                ++registered:
-                  type: string
-                  format: date-time
-                  description: Date when the domain was initially registered.
-                ++registrant:
-                  type: array
-                  description: Supplementary list of registrant names. May overlap with person or responsible.
                   items:
                     type: string
+                    example: +1.646-693-5324
+                ++privacy:
+                  type: string
+                  description: |
+                    Indicates whether WHOIS privacy protection is enabled.
+
+                    When set to `1`, privacy protection is enabled.
+                    When set to `0`, privacy protect is not enabled.
+                  enum:
+                  = 0
+                  = 1
+                ++registered:
+                  type: string
+                  format: sql-date-time
+                  pattern: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$'
+                  description: |
+                    Timestamp when the domain was initially registered.
+
+                    Date and time in 'YYYY-MM-DD HH:MM:SS' format. Time is in 24-hour format with no timezone.
+                    Normalizes the ISO date in `creation date`.
+                  example: '2025-05-19 14:23:45'
+                ++registrant:
+                  type: array
+                  description: Supplementary list of registrant names. Derived from `registrant name` and `registrant organization`.
+                  items:
+                    type: string
+                    example: [Zero Cool, Titan Digital]
                 ++registrar:
                   type: string
                   description: Name of the registrar managing the domain registration.
+                  example: Squarespace Domains II LLC
                 ++updated:
                   type: string
-                  format: date-time
-                  description: Date when the domain's WHOIS record was last updated.
+                  format: sql-date-time
+                  pattern: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$'
+                  description: |
+                    Timestamp when the domain's WHOIS record was last updated.
+                    
+                    Date and time in 'YYYY-MM-DD HH:MM:SS' format. Time is in 24-hour format with no timezone.
+                    Normalizes the ISO date in `updated date`.
+                  example: '2025-05-19 14:23:45'.
               additionalProperties:
                 type: object
                 description: |
