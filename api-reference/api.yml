@@ -5,8 +5,3 @@ info:
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
-  contact:
-    email: support@pulsedive.com
-  description: >
-    The API allows programmatic management of resources within Pulsedive.
-    Please report any discrepancies in API behavior to <a href="mailto:support@pulsedive.com">Pulsedive Support</a>.
