@@ -14,8 +14,7 @@ info:
 externalDocs:
   url: https://pulsedive.mintlify.app
 servers:
-- url: https://pulsedive.com
+  - url: https://pulsedive.com
 tags:
-- name: Indicators
-  description: >
-    Use this endpoint to research existing Indicators by ID or value.
+  - name: Indicators
+    description: Use this endpoint to research existing Indicators by ID or value.
