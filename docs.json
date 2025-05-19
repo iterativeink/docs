@@ -72,10 +72,10 @@
             ]
           },
           {
-            "group": "Query Pulsedive Data",
+            "group": "Query Data",
             "pages": [
-              "query/build-query",
               "query/query-language",
+              "query/build-query",
               "query/search-indicator",
               "query/search-bulk",
               "query/search-threat"
@@ -95,13 +95,13 @@
           {
             "group": "Export Data",
             "pages": [
-              "export/export-data",
+              "export/export-results",
               "export/bulk-export",
               "export/download-sample-data"
             ]
           },
           {
-            "group": "Integrations",
+            "group": "Integrate",
             "pages": [
               "integrations/available",
               "integrations/add-on"
