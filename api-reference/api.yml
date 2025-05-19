@@ -20,6 +20,9 @@ externalDocs:
 servers:
   - url: https://www.pulsedive.com
 
+security:
+  - ApiKeyAuth: [] # Optional authentication
+
 tags:
   - name: Indicators
     description: Look up known indicators.
@@ -36,3 +39,10 @@ paths:
         Retrieve detailed threat intelligence information for a specific indicator by value.
         To query links and properties, retrieve the indicator by ID instead.
       operationId: getIndicatorByValue
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: key
