@@ -846,7 +846,7 @@ components:
                   - type: array
                     items:
                       type: string
-              dom:
+            dom:
               type: object
               description: Data related to the Document Object Model (DOM) of this indicator. Collected during active scanning.
               properties:
