@@ -34,7 +34,7 @@
           {
             "group": "Threat Intelligence Fundamentals",
             "pages": [
-              "intro-threat-intelligence/index",
+              "intro-threat-intelligence/intro",
               "intro-threat-intelligence/concepts",
               "intro-threat-intelligence/glossary"
             ]
