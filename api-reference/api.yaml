@@ -585,8 +585,8 @@ components:
                     When set to `1`, privacy protection is enabled.
                     When set to `0`, privacy protect is not enabled.
                   enum:
-                  = 0
-                  = 1
+                  - 0
+                  - 1
                 ++registered:
                   type: string
                   format: sql-date-time
@@ -616,7 +616,7 @@ components:
                     
                     Date and time in 'YYYY-MM-DD HH:MM:SS' format. Time is in 24-hour format with no timezone.
                     Normalizes the ISO date in `updated date`.
-                  example: '2025-05-19 14:23:45'.
+                  example: '2025-05-19 14:23:45'
               additionalProperties:
                 type: object
                 description: |
