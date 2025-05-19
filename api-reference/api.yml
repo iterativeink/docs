@@ -29,8 +29,6 @@ tags:
 paths:
   /api/info.php:
     get:
-      security:
-        - ApiKeyAuth: [] # Optional authentication
       tags:
         - Indicators
       summary: Get Indicator By Value
@@ -76,10 +74,3 @@ paths:
             pretty:
               summary: Pretty-printed output
               value: 1
-
-components:
-  securitySchemes:
-    ApiKeyAuth:
-      type: apiKey
-      in: query
-      name: key
