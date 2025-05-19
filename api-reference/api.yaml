@@ -834,22 +834,23 @@ components:
                   description: xx
             banners:
               type: object
-              description: Mapping of port numbers (as strings) to service banner strings. Each key represents a port number, and its corresponding value is the banner retrieved from that port. Collected during active scanning.
+              description: Mapping of port numbers (as strings) to service banner strings. 
             cookies:
               type: object
               description: |
                 Mapping of HTTP cookies set by this indicator.
+                Key names and values are dynamically generated.
                 Collected during active scanning.
-
-                Each `{key}` represents the name of a cookie (all lowercase), and its corresponding value is the content retrieved for that cookie.
               additionalProperties:
                 anyOf:
                   - type: string
-                    description: testing 1
+                    description: |
+                      Each `{key}` represents the name of a cookie (all lowercase), and the corresponding `{value}` string is the content retrieved for that cookie.
                   - type: array
                     items:
                       type: string
-                    description: testing 2
+                    description: |
+                      Each `{key}` represents the name of a cookie (all lowercase), and its corresponding `{value}` array is the content retrieved for that cookie.
             dom:
               type: object
               description: Data related to the Document Object Model (DOM) of this indicator. Collected during active scanning.
