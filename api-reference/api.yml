@@ -43,7 +43,7 @@ paths:
         - name: indicator
           in: query
           required: true
-          description: Value of the indicator to retrieve. May be a domain name, IP address, or URL.
+          description: Value of the indicator to retrieve. May be a domain name (for example, `microsoft.com`), IP address (for example, `8.8.8.8`), or URL (for example, `https://pulsedive.com/explore`).
           schema:
             type: string
           examples:
@@ -55,7 +55,7 @@ paths:
               value: microsoft.com
             url:
               summary: URL
-              value: https://puledive.com/explore
+              value: https://pulsedive.com/explore
         - name: pretty
           in: query
           required: false
