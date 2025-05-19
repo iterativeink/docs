@@ -43,7 +43,12 @@ paths:
         - name: indicator
           in: query
           required: true
-          description: Value of the indicator to retrieve. May be a domain name (for example, `microsoft.com`), IP address (for example, `8.8.8.8`), or URL (for example, `https://pulsedive.com/explore`).
+          description: |
+            Value of the indicator to retrieve. May be:
+
+            - a domain name (for example, `microsoft.com`)
+            - an IP address (for example, `8.8.8.8`)
+            - a URL (for example, `https://pulsedive.com/explore`)
           schema:
             type: string
           examples:
@@ -61,7 +66,9 @@ paths:
           required: false
           description: |
             Indicates whether to format returned JSON results.
-            For pretty-printed output, set to 1. For compact output, set to 0.
+            
+            For pretty-printed output, set to 1.
+            For compact output, set to 0.
           schema:
             type: integer
             enum: [0, 1]
