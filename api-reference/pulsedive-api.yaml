@@ -1,4 +1,4 @@
-openapi: "3.1.0"
+openapi: 3.1.0
 info:
   title: Pulsedive API Reference
   version: 1.0.0
@@ -24,8 +24,6 @@ paths:
     parameters:
       $ref: '#/components/parameters/indicatorValue'
     get:
-      security:
-      - configuration_key: []
       summary: By Value
       description: This query is identical to querying by indicator ID, but the information is retrieved using the indicator value. Querying links and properties by indicator value won't work.
       tags:
@@ -43,18 +41,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/IndicatorByValue'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/RateLimited'
-        '500':
-          $ref: '#/components/responses/ServerError'
-        default:
-          $ref: '#/components/responses/GenericError'
 components:
   parameters:
   - name: boardId
@@ -84,16 +70,28 @@ components:
           description: The number of columns to layout on the board.
           enum:
           - domain
-          - xx
-          default: multi
+          - ip
+          - url
         risk:
           type: string
           description: xx
-          enum: xx
+          enum:
+          - unknown
+          - very low
+          - low
+          - medium
+          - high
+          - critical
         risk_recommended:
           type: string
           description: xx
-          enum: xx
+          enum:
+          - unknown
+          - very low
+          - low
+          - medium
+          - high
+          - critical
         manualrisk:
           type: integer
           description: xx
@@ -124,6 +122,8 @@ components:
           type: integer
           description: xx
           enum:
+          - 0
+          - 1
         submissions:
           type: integer
           description: xx
@@ -148,7 +148,13 @@ components:
               risk:
                 type: string
                 description: Level of threat.
-                enum: xx
+                enum:
+                - unknown
+                - very low
+                - low
+                - medium
+                - high
+                - critical
         redirects:
           type: object
           description: xx
@@ -582,7 +588,6 @@ components:
                 ++status:
                   type: string
                   description: xx
-                  enum: xx
                 content-type:
                   type: string
                   description: xx
