@@ -115,7 +115,7 @@
         "tab": "Troubleshooting",
         "groups": [
           {
-            "group": "Support",
+            "group": "Get Support",
             "pages": [
               "troubleshooting/support"
             ]
@@ -123,13 +123,14 @@
           {
             "group": "Common Issues",
             "pages": [
-              "troubleshooting/common-issues"
+              "common-issues/automate-workflows"
             ]
           },
           {
             "group": "Product Lifecycle",
             "pages": [
-              "troubleshooting/product-lifecycle/recommended-migrations"
+              "product-lifecycle/release-stages",
+              "product-lifecycle/recommended-migrations"
             ]
           }
         ]
