@@ -68,12 +68,6 @@
             ]
           },
           {
-            "group": "FAQs",
-            "pages": [
-              "placeholder"
-            ]
-          },
-          {
             "group": "Data Privacy",
             "pages": [
               "placeholder"
@@ -203,6 +197,19 @@
             "group": "Product Lifecycle",
             "pages": [
               "troubleshooting/product-lifecycle/recommended-migrations"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "FAQs",
+        "groups": [
+          {
+            "group":"Frequently Asked Questions",
+            "pages": [
+              "faqs/number1",
+              "faqs/number2",
+              "faqs/number3"
             ]
           }
         ]
