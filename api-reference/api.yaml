@@ -21,7 +21,7 @@ servers:
 
 tags:
 - name: Authorization
-  
+
 - name: Indicators
   description: Look up known indicators.
 - name: Threats
@@ -115,10 +115,13 @@ components:
       properties:
         qid:
           type: integer
-          description: Unique identifier of the associated query, if available. Null indicates no query association.
+          description: |
+            Unique identifier of the associated query, if available.
+          nullable: true
         iid:
           type: integer
           description: Unique identifier of the indicator.
+          nullable: false
         indicator:
           type: string
           description: Value of the indicator being assessed.
@@ -129,9 +132,23 @@ components:
           - domain
           - ip
           - url
+        examples:
+          domain:
+            summary: Domain name
+            value: microsoft.com
+          ip:
+            summary: IP address
+            value: 8.8.8.8
+          url:
+            summary: URL
+            value: https://microsoft.com/example
         risk:
           type: string
-          description: Pulsedive-calculated risk level.
+          description: |
+            Final risk score for the indicator.
+
+            If a user has manually adjusted the risk score, this value may differ from the recommended risk score.
+            In this case, `manualrisk` is set to `1`.
           enum:
           - unknown
           - very low
@@ -162,49 +179,95 @@ components:
         retired:
           type: integer
           description: |
-            Indicates whether this indicator is considered inactive or obsolete.
+            Indicates whether this indicator is inactive or obsolete.
+
+            An indicator is automatically retired if, in the past three months, it has not been:
+           
+            - Reported using the Seen button in the Pulsedive UI
+            - Observed in any source feeds
+            - Submitted through the Analyze section of the Pulsedive UI
+
+            Contributors can also retire indicators manually.
 
             When set to `1`, this indicator is retired.
             When set to `0`, this indicator is active.
           enum:
           - 0
           - 1
+          nullable: true
         stamp_added:
           type: string
-          description: Timestamp when this indicator was first added to Pulsedive.
-          format: date-time
+          format: sql-date-time
+          pattern: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$'
+          description: |
+            Timestamp when the indicator was first added to Pulsedive.
+
+            Date and time in 'YYYY-MM-DD HH:MM:SS' format. Time is in 24-hour format with no timezone.
+          nullable: true
+          example: '2025-05-19 14:23:45'
         stamp_updated:
           type: string
-          description: Last time the indicator record was updated in Pulsedive.
-          format: date-time
+          format: sql-date-time
+          pattern: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$'
+          description: |
+            Timestamp when the indicator record was last updated in Pulsedive.
+
+            Date and time in 'YYYY-MM-DD HH:MM:SS' format. Time is in 24-hour format with no timezone.
+          nullable: true
+          example: '2025-05-19 14:23:45'
         stamp_seen:
           type: string
-          description: Last time the indicator was reported or seen in feeds or user submissions in Pulsedive.
-          format: date-time
+          format: sql-date-time
+          pattern: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$'
+          description: |
+            Timestamp when the indicator was last reported or seen in feeds or user submissions in Pulsedive.
+            
+            Date and time in 'YYYY-MM-DD HH:MM:SS' format. Time is in 24-hour format with no timezone.
+          nullable: true
+          example: '2025-05-19 14:23:45'
         stamp_probed:
           type: string
-          description: Last time the indicator was actively scanned (probed) by Pulsedive.
           format: date-time
+          pattern: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$'
+          description: |
+            Timestamp when the indicator was last actively scanned (probed) by Pulsedive.
+            
+            Date and time in 'YYYY-MM-DD HH:MM:SS' format. Time is in 24-hour format with no timezone.
+          nullable: true
+          example: '2025-05-19 14:23:45'
         stamp_retired:
           type: string
-          format: date-time
-          description: Timestamp when the indicator was retired in Pulsedive, if applicable.
+          format: sql-date-time
+          pattern: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$'
+          description: |
+            Timestamp when the indicator was retired in Pulsedive, if applicable.
+          
+            Date and time in 'YYYY-MM-DD HH:MM:SS' format. Time is in 24-hour format with no timezone.
           nullable: true
+          example: '2025-05-19 14:23:45'
         recent:
           type: integer
-          description: Flag indicating recent activity.
+          description: |
+            Indicates whether this indicator has had recent activity. Deprecated.
+
+            When set to `1`, the indicator has had recent activity.
+            When set to `0`, the indicator has not had recent activity.
           enum:
           - 0
           - 1
         submissions:
           type: integer
-          description: Number of times the indicator has been submitted.
+          description: Number of times the indicator has been submitted by a contributor.
         umbrella_rank:
           type: integer
-          description: Threat reputation score assigned by Cisco Umbrella.
+          description: |
+            Rank of the indicator on Cisco Umbrella's top one million domains list.
+            This list reflects the most frequently queried domains, based on passive DNS data across Cisco's global Umbrella network.
+          example: 11032
         umbrella_domain:
           type: string
-          description: Canonical or base doman as recognized by Cisco Umbrella.
+          description: |
+            Canonical (base) domain as recognized by Cisco Umbrella. Populated when `umbrella_rank` is present.
         riskfactors:
           type: array
           description: List of risk factors influencing this indicator's score.
@@ -217,6 +280,7 @@ components:
               description:
                 type: string
                 description: Explanation of the risk factor.
+                example: found in threat feeds
               risk:
                 type: string
                 description: Risk level associated with the risk factor.
@@ -243,7 +307,24 @@ components:
                     description: Unique identifier of other indicator.
                   indicator:
                     type: string
-                    description: Value for other indicator.
+                    description: |
+                      Value for other indicator.
+
+                      May be:
+
+                      - a domain name (for example, `microsoft.com`)
+                      - an IP address (for example, `8.8.8.8`)
+                      - a URL (for example, `https://pulsedive.com/explore`)
+                    examples:
+                      ip:
+                        summary: IPv4 address
+                        value: 8.8.8.8
+                      domain:
+                        summary: Domain name
+                        value: microsoft.com
+                      url:
+                        summary: URL
+                        value: https://pulsedive.com/explore
             to:
               type: array
               description: Other indicators that this indicator redirects to.
@@ -256,13 +337,29 @@ components:
                     description: Unique identifier of other indicator.
                   indicator:
                     type: string
-                    description: Value for other indicator.
+                    description: |
+                      Value for other indicator.
+
+                      May be:
+
+                      - a domain name (for example, `microsoft.com`)
+                      - an IP address (for example, `8.8.8.8`)
+                      - a URL (for example, `https://pulsedive.com/explore`)
+                    examples:
+                      ip:
+                        summary: IPv4 address
+                        value: 8.8.8.8
+                      domain:
+                        summary: Domain name
+                        value: microsoft.com
+                      url:
+                        summary: URL
+                        value: https://pulsedive.com/explore
         threats:
           type: array
           description: Known threats associated with this indicator.
           items:
             type: object
-            description: xx
             properties:
               tid:
                 type: integer
@@ -270,72 +367,106 @@ components:
               name:
                 type: string
                 description: Name of the threat.
+                example: Zeus
               category:
                 type: string
-                description: Category of the threat.
+                description: Category assigned to the threat.
+                example: malware
               risk:
                 type: string
-                description: Risk level of the threat.
+                description: Risk level associated with the threat.
+                enum:
+                - unknown
+                - very low
+                - low
+                - medium
+                - high
+                - critical
               stamp_linked:
                 type: string
-                format: date-time
-                description: Timestamp when the threat was linked to this indicator.
+                format: sql-date-time
+                pattern: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$'
+                description: |
+                  Timestamp when the threat was linked to this indicator.
+            
+                  Date and time in 'YYYY-MM-DD HH:MM:SS' format. Time is in 24-hour format with no timezone.
+                example: '2025-05-19 14:23:45'
         feeds:
           type: array
-          description: Threat intelligence feeds referencing this indicator.
+          description: Threat intelligence feeds that reference this indicator.
           items:
             type: object
-            description: xx
             properties:
               fid:
                 type: integer
-                description: Unique identifier of the feed.
+                description: Unique identifier for the feed.
+                nullable: false
               name:
                 type: string
                 description: Name of the feed.
+                example: Zeus Bad Domains
               category:
                 type: string
-                description: Category of the feed.
+                description: Category assigned to the feed.
+                example: malware
               organization:
                 type: string
-                description: Organization from which the feed was sourced.
+                description: Organization that provides the feed.
+                example: abuse.ch
               pricing:
                 type: string
-                description: xx
+                description: Pricing tier of the feed.
+                example: free
               stamp_linked:
                 type: string
-                description: Timestamp when the feed was linked to this indicator.
-                format: date-time
+                format: sql-date-time
+                pattern: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$'
+                description: |
+                  Timestamp when the feed was linked to this indicator.
+            
+                  Date and time in 'YYYY-MM-DD HH:MM:SS' format. Time is in 24-hour format with no timezone.
+                example: '2025-05-19 14:23:45'
         comments:
           type: array
-          description: Information about comments recorded from Pulsedive users for this indicator.
+          description: Comments submitted by Pulsedive contributors for this indicator.
           items:
             type: object
-            description: xx
             properties:
               cid:
                 type: integer
-                description: Unique identifier of the comment.
+                description: Unique identifier for the comment.
+                nullable: false
               username:
                 type: string
-                description: Username of the comment originator.
+                description: Username of the comment's author.
               title:
                 type: string
-                description: Job title of the comment originator.
+                description: Job title of the comment's author.
               comment:
                 type: string
-                description: Text of the comment.
+                description: Text content of the comment.
               stamp_added:
                 type: string
-                description: Timestamp for when the comment was created.
-                format: date-time
+                format: sql-date-time
+                pattern: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$'
+                description: |
+                  Timestamp when the comment was created.
+            
+                  Date and time in 'YYYY-MM-DD HH:MM:SS' format. Time is in 24-hour format with no timezone.
+                example: '2025-05-19 14:23:45'
               stamp_updated:
                 type: string
-                description: Timestamp for when the comment was last updated.
-                format: date-time
+                format: sql-date-time
+                pattern: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$'
+                description: |
+                  Timestamp when the comment was last modified.
+            
+                  Date and time in 'YYYY-MM-DD HH:MM:SS' format. Time is in 24-hour format with no timezone.
+                example: '2025-05-19 14:23:45'
               uid:
                 type: integer
-                description: Unique user identifer of the comment originator.
+                description: Unique identifier for the user who created the comment.
+                Visible to only the user who submitted the comment.
         attributes:
           type: object
           description: Technical metadata observed for this indicator.
@@ -345,45 +476,55 @@ components:
               description: List of ports open/in use.
               items:
                 type: string
+                example: '443'
             protocol:
               type: array
               description: List of network protocols in use.
               items:
                 type: string
+                example: HTTPS
             technology:
               type: array
               description: List of technologies identified.
               items:
                 type: string
+                example: jQuery
         properties:
           type: object
-          description: Detailed sub-properties for this indicator, grouped by data source.
+          description: Detailed sub-properties for this indicator, grouped by type or data source.
           properties:
             geo:
               type: object
-              description: Geolocation data associated with this indicator.
+              description: Geolocation details linked to this indicator.
               properties:
                 countrycode:
                   type: string
-                  description: Two-letter country code of the country associated with this indicator.
+                  description: Two-letter ISO country code.
+                  example: US
                 region:
                   type: string
-                  description: State or region associated with this indicator.
+                  description: State or region.
+                  example: CA
                 country:
                   type: string
-                  description: Full name of the country associated with this indicator.
+                  description: Full country name.
+                  example: United States of America
                 address:
                   type: string
-                  description: Address associated with this indicator.
+                  description: Street address.
+                  example: 221 Lombard Street
                 zip:
                   type: string
-                  description: Postal or ZIP code associated with this indicator.
+                  description: Postal or ZIP code.
+                  example: '94102'
                 city:
                   type: string
-                  description: City or municipality associated with this indicator.
+                  description: City or municipality.
+                  example: San Francisco
                 org:
                   type: string
-                  description: Name of the organization associated with this indicator.
+                  description: Name of the associated organization.
+                  example: Pulsedive
             whois:
               type: object
               description: |
