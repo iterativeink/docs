@@ -207,9 +207,7 @@
           {
             "group":"Frequently Asked Questions",
             "pages": [
-              "faqs/number1",
-              "faqs/number2",
-              "faqs/number3"
+              "faqs"
             ]
           }
         ]
