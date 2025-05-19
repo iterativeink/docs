@@ -210,20 +210,6 @@
         ]
       }
     ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Community",
-          "href": "https://pulsedive.slack.com/",
-          "icon": "slack"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://blog.pulsedive.com/",
-          "icon": "newspaper"
-        }
-      ]
-    }
   },
   "logo": {
     "light": "/logo/light.svg",
@@ -232,15 +218,23 @@
   "navbar": {
     "links": [
       {
-        "label": "Support",
+        "label": "ContactSupport",
         "href": "mailto:support@pulsedive.com"
+      },
+      {
+        "label": "Community",
+        "href": "https://pulsedive.slack.com/"
+      },
+      {
+      "label": "Blog",
+      "href": "https://blog.pulsedive.com/"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Dashboard",
       "href": "https://pulsedive.com/dashboard/"
-    }
+    },
   },
   "footer": {
     "socials": {
