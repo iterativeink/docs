@@ -839,9 +839,17 @@ components:
               type: object
               description: |
                 Mapping of HTTP cookies set by this indicator.
-                Each key represents the name of a cookie (all lowercase), and its corresponding value is the content retrieved for that cookie. Collected during active scanning.
+                Collected during active scanning.
+
+                Each `{key}` represents the name of a cookie (all lowercase), and its corresponding value is the content retrieved for that cookie.
               additionalProperties:
-                  type: string
+                anyOf:
+                  - type: string
+                    description: testing 1
+                  - type: array
+                    items:
+                      type: string
+                    description: testing 2
             dom:
               type: object
               description: Data related to the Document Object Model (DOM) of this indicator. Collected during active scanning.
