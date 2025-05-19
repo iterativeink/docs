@@ -30,9 +30,9 @@ paths:
   /api/info.php:
     get:
       security:
-      - ApiKeyAuth: [] # Optional authentication
+        - ApiKeyAuth: [] # Optional authentication
       tags:
-      - Indicators
+        - Indicators
       summary: Get Indicator By Value
       description: |
         Retrieve detailed threat intelligence information for a specific indicator by value.
@@ -40,27 +40,68 @@ paths:
       operationId: getIndicatorByValue
   
       parameters:
-      - name: indicator
-        in: query
-        required: true
-        schema:
-          type: string
-        description: The indicator value to search (e.g., domain, IP, URL).
-      - name: pretty
-        in: query
-        required: false
-        schema:
-          type: string
-        description: Set to "1" for formatted JSON output.
+        - name: indicator
+          in: query
+          required: true
+          description: Value of the indicator to retrieve. May be a domain name, IP address, or URL.
+          oneOf:
+            - type: string
+              format: ipv4
+            - type: string
+              format: hostname
+            - type: string
+              format: uri
+          examples:
+            ip:
+              summary: IPv4 address
+              value: 8.8.8.8
+            domain:
+              summary: Domain name
+              value: microsoft.com
+            url:
+              summary: URL
+              value: https://puledive.com/explore
+        - name: pretty
+          in: query
+          required: false
+          description: Indicates whether to format returned JSON results.
+          schema:
+            type: integer
+            enum: [0, 1]
+            default: 0
+          examples:
+            compact:
+              summary: Compact output
+              value: 0
+            pretty:
+              summary: Pretty-printed output
+              value: 1
+
       responses:
         '200':
-          description: Successful response with indicator information.
+          description: Request was successful. Returns indicator information in JSON format.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/IndicatorResponse'
 
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
 components:
+
   schemas:
     IndicatorResponse:
       type: object
@@ -228,6 +269,60 @@ components:
           format: uri
         ++title:
           type: string
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Message describing the error that occurred.
+
+  responses:
+    BadRequest:
+      description: >
+        Bad request. The request was malformed or missing required parameters.
+        The response includes an `error` field with more information if available.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+
+    Unauthorized:
+      description: >
+        Unauthorized. Your API key is missing or invalid.
+        The response includes an `error` field describing the issue.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+
+    NotFound:
+      description: >
+        Not found. The requested indicator could not be located.
+        The response includes an `error` field with details, if available.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+
+    TooManyRequests:
+      description: >
+        Rate limit exceeded. Too many requests have been made in a short period of time.
+        The response includes an `error` field and guidance on when to retry.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+
+    InternalServerError:
+      description: >
+        Server error. An unexpected problem occurred on our end.
+        These errors are automatically reported to our team. The response includes an `error` field when possible.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
