@@ -838,8 +838,7 @@ components:
             cookies:
               type: object
               description: |
-                Mapping of HTTP cookies set by this indicator.
-                Key names and values are dynamically generated.
+                Mapping of HTTP cookies set by this indicator. Key names and values are dynamically generated.
                 Collected during active scanning.
               additionalProperties:
                 anyOf:
