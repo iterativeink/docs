@@ -52,57 +52,69 @@
         "tab": "Guides",
         "groups": [
           {
-            "group": "Research Existing Threats and Indicators",
+            "group": "Research Threats and Indicators",
             "pages": [
-              "research-existing-threats-indicators/what-are-threats-and-indicators",
-              "research-existing-threats-indicators/interpret-threat-and-indicator-profiles"
+              "research/lookup-threat",
+              "research/interpret-profile",
+              "research/correlate-indicator",
+              "research/track-trends",
+              "research/explore-context"
             ]
           },
           {
-            "group": "Query Data",
+            "group": "Enrich Indicators",
             "pages": [
-              "query-data/query-language",
-              "query-data/enrich-an-indicator",
-              "query-data/enrich-in-bulk",
-              "query-data/research-a-threat"
+              "enrich/individual",
+              "enrich/bulk",
+              "enrich/interpret-results",
+              "enrich/get-links",
+              "enrich/get-properties"
             ]
           },
           {
-            "group": "Export",
+            "group": "Query Pulsedive Data",
             "pages": [
-              "export/what-is-a-feed",
-              "export/download-sample-data",
-              "export/export-to-csv",
-              "export/export-to-stix_taxii",
-              "export/export-in-bulk"
+              "query/build-query",
+              "query/query-language",
+              "query/search-indicator",
+              "query/search-bulk",
+              "query/search-threat"
             ]
           },
           {
-            "group": "Enrich and Investigate Indicators",
+            "group": "Automate Workflows",
             "pages": [
-              "enrich-investigate-indicators/submit-indicators-with-analyze-tool",
-              "enrich-investigate-indicators/interpret-analyze-results"
+              "automate/alert-triage",
+              "automate/indicator-enrichment-workflow",
+              "automate/centralized-intel-pipeline",
+              "automate/integrate-soar-playbook",
+              "automate/schedule-feed",
+              "automate/threat-hunting"
+            ]
+          },
+          {
+            "group": "Export Data",
+            "pages": [
+              "export/export-data",
+              "export/bulk-export",
+              "export/download-sample-data"
             ]
           },
           {
             "group": "Integrations",
             "pages": [
-              "placeholder"
+              "integrations/available",
+              "integrations/add-on"
             ]
           },
           {
-            "group": "Add-On",
+            "group": "Manage Account",
             "pages": [
-              "placeholder"
-            ]
-          },
-          {
-            "group": "Manage Dashboard Account",
-            "pages": [
-              "manage-dashboard-account/change-email",
-              "manage-dashboard-account/change-password",
-              "manage-dashboard-account/download-data",
-              "manage-dashboard-account/delete-account"
+              "manage-account/manage-api-key",
+              "manage-account/change-email",
+              "manage-account/change-password",
+              "manage-account/delete-account",
+              "manage-account/download-data"
             ]
           }
         ]
