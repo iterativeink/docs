@@ -81,76 +81,8 @@ paths:
         '200':
           description: Request was successful. Returns indicator information in JSON format.
 
-        '400':
-          $ref: '#/components/responses/BadRequest'
-
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-
-        '404':
-          $ref: '#/components/responses/NotFound'
-
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-
 components:
   schemas:
-
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Message describing the error that occurred.
-
-  responses:
-    BadRequest:
-      description: |
-        Bad request. The request was malformed or missing required parameters.
-        The response includes an `error` field with more information if available.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-
-    Unauthorized:
-      description: |
-        Unauthorized. Your API key is missing or invalid.
-        The response includes an `error` field describing the issue.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-
-    NotFound:
-      description: |
-        Not found. The requested indicator could not be located.
-        The response includes an `error` field with details, if available.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-
-    TooManyRequests:
-      description: |
-        Rate limit exceeded. Too many requests have been made in a short period of time.
-        The response includes an `error` field and guidance on when to retry.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-
-    InternalServerError:
-      description: |
-        Server error. An unexpected problem occurred on our end.
-        These errors are automatically reported to our team.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
 
   securitySchemes:
     ApiKeyAuth:
