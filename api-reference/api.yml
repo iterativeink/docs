@@ -13,7 +13,7 @@ info:
     url: https://www.apache.org/licenses/LICENSE-2.0.html
   contact:
     email: support@pulsedive.com
-    
+
 externalDocs:
   url: https://pulsedive.mintlify.app
 
@@ -34,7 +34,11 @@ paths:
       tags:
       - Indicators
       summary: Get Indicator By Value
-      description: Retrieve detailed threat intelligence information for a specific indicator.
+      description: |
+        Retrieve detailed threat intelligence information for a specific indicator by value.
+        To query links and properties, retrieve the indicator by ID instead.
+      operationId: getIndicatorByValue
+  
       parameters:
       - name: indicator
         in: query
