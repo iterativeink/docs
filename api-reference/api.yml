@@ -78,7 +78,14 @@ paths:
           pretty:
             summary: Pretty-printed output
             value: 1
-
+      - name: key
+        in: query
+        required: false
+        description: |
+          Your Pulsedive API key.
+          API key authentication is optional. However, requests without a key are rate-limited more aggressively. We recommend including an API key for better performance and reliability.
+        schema:
+          type: string
       responses:
         '200':
           description: Successful request. Returns indicator information in JSON format.
