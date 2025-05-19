@@ -1,4 +1,4 @@
-openapi: "3.0.3"
+openapi: 3.0.3
 info:
   title: Pulsedive API Reference
   version: 1.0.0
@@ -32,11 +32,6 @@ paths:
       responses:
         '200':
           description: Success
-          headers:
-            Ratelimit:
-              $ref: '#/components/headers/RateLimit'
-            RateLimitPolicy:
-              $ref: '#/components/headers/RateLimitPolicy'
           content:
             application/json:
               schema:
