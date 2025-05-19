@@ -115,13 +115,12 @@ components:
       properties:
         error:
           type: string
-          description: Message describing the error that occurred.
+          description: Message describing the error that occurred, if available.
 
   responses:
     BadRequest:
       description: |
         Bad request. The request was malformed or missing required parameters.
-        The response includes an `error` field with more information if available.
       content:
         application/json:
           schema:
@@ -130,7 +129,6 @@ components:
     Unauthorized:
       description: |
         Unauthorized. Your API key is missing or invalid.
-        The response includes an `error` field describing the issue.
       content:
         application/json:
           schema:
@@ -139,7 +137,6 @@ components:
     NotFound:
       description: |
         Not found. The requested indicator could not be located.
-        The response includes an `error` field with details, if available.
       content:
         application/json:
           schema:
@@ -148,7 +145,6 @@ components:
     TooManyRequests:
       description: |
         Rate limit exceeded. Too many requests have been made in a short period of time.
-        The response includes an `error` field and guidance on when to retry.
       content:
         application/json:
           schema:
