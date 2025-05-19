@@ -480,19 +480,19 @@ components:
               description: List of ports open/in use.
               items:
                 type: string
-                example: '443'
+                example: ["443","80"]
             protocol:
               type: array
               description: List of network protocols in use.
               items:
                 type: string
-                example: HTTPS
+                example: ["HTTP","HTTPS"]
             technology:
               type: array
               description: List of technologies identified.
               items:
                 type: string
-                example: jQuery
+                example: ["Apache","jQuery"]
         properties:
           type: object
           description: Detailed sub-properties for this indicator, grouped by type or data source.
@@ -534,7 +534,7 @@ components:
               description: |
                 Collection of data sourced from WHOIS records and registrar-specific extensions to the base WHOIS schema, along with supplemental fields provided by Pulsedive (marked with a `++` prefix). Includes details about the domain, its registrar, and related contacts.
                 
-                For standard WHOIS data, each key matches a field name from the record, and its value contains the data corresponding content. If a field has multiple values, the values are listed as an array of strings.
+                For standard WHOIS data, each key matches a field name from the record, and its value contains the corresponding content. If a field has multiple values, the values are listed as an array of strings.
 
                 Pulsedive's supplemental fields do not appear in the original source data. The values for these fields are derived from raw data or parsed from related sources to provide additional context.
               properties:
@@ -851,12 +851,29 @@ components:
                   description: xx
             banners:
               type: object
-              description: Mapping of port numbers (as strings) to service banner strings. 
+              description: |
+                Mapping of port numbers to service banner strings, collected during active scanning.
+
+                Each `{key}` matches a port number. The corresponding value may be a string or an array of strings, depending on how many banners were retrieved for that port.
+              additionalProperties:
+                anyOf:
+                  - type: string
+                    description: |
+                      Each `{key}` matches a port number. The `{value}` string contains the banner retrieved for that port.
+                  - type: array
+                    items:
+                      type: string
+                    description: |
+                      Each `{key}` matches a port number. The `{value}` array contains multiple banners retrieved for that port.
+              example:
+                "22": "SSH-2.0-OpenSSH_7.4\n"
+                "143": "* OK [CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE NAMESPACE LITERAL+ STARTTLS AUTH=PLAIN AUTH=LOGIN] Dovecot ready.\n"
             cookies:
               type: object
               description: |
-                Mapping of HTTP cookies set by this indicator. Key names and values are dynamically generated.
-                Collected during active scanning.
+                Mapping of HTTP cookies set by this indicator, collected during active scanning.
+                
+                Each `{key}` represents the name of a cookie. The corresponding value may be a string or an array of strings, depending on how many pieces of content were retrieved for that cookie.
               additionalProperties:
                 anyOf:
                   - type: string
@@ -867,6 +884,9 @@ components:
                       type: string
                     description: |
                       Each `{key}` represents the name of a cookie. The `{value}` array contains multiple pieces of content retrieved for that cookie.
+              example:
+                _ga: "GA1.1.1991921685.1744247816"
+                _ga_g550td8bzn: "GS1.1.1744247869.1.0.1744247869.0.0.0"
             dom:
               type: object
               description: Data related to the Document Object Model (DOM) of this indicator. Collected during active scanning.
