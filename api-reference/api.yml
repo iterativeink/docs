@@ -40,6 +40,12 @@ paths:
         To query links and properties, retrieve the indicator by ID instead.
       operationId: getIndicatorByValue
       responses:
+        '200':
+          description: Successful request. Returns indicator information in JSON format.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IndicatorResponse'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -54,6 +60,13 @@ paths:
 components:
 
   schemas:
+    IndicatorResponse:
+      type: object
+      properties:
+        qid:
+          type: string
+        iid:
+          type: integer
     ErrorResponse:
       type: object
       properties:
