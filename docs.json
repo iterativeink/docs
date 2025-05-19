@@ -168,12 +168,6 @@
         ]
       },
       {
-        "tab": "Libraries",
-        "pages": [
-          "libraries"
-        ]
-      },
-      {
         "tab": "Troubleshooting",
         "groups": [
           {
@@ -194,6 +188,12 @@
               "troubleshooting/product-lifecycle/recommended-migrations"
             ]
           }
+        ]
+      },
+      {
+        "tab": "Libraries",
+        "pages": [
+          "libraries"
         ]
       },
       {
