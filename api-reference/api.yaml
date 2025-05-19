@@ -560,7 +560,7 @@ components:
 
                     Date and time in 'YYYY-MM-DD HH:MM:SS' format. Time is in 24-hour format with no timezone.
                     Normalizes the ISO date in `registrar registration expiration date`.
-                example: '2025-05-19 14:23:45'
+                  example: '2025-05-19 14:23:45'
                 ++gdpr:
                   type: string
                   description: |
@@ -617,17 +617,16 @@ components:
                     Date and time in 'YYYY-MM-DD HH:MM:SS' format. Time is in 24-hour format with no timezone.
                     Normalizes the ISO date in `updated date`.
                   example: '2025-05-19 14:23:45'
-              additionalProperties:
                 type: object
+                additionalProperties:
+                  anyOf:
+                    - type: string
+                    - type: array
+                      items:
+                        type: string
                 description: |
                   Dynamic key-value pairs representing additional WHOIS data fields not explicitly defined above.
                   Each key is a string representing the field name, and the value is an object containing the field's data.
-                  This allows for flexibility in capturing various data points without explicitly defining each possible field.
-                oneOf:
-                - type: string
-                - type: array
-                  items:
-                    type: string
             http:
               type: object
               description: "Data extracted from the HTTP response and headers. May include information about the result (example: status or code), server (example: server or x-powered-by), content (example: content-type or content-length), caching (example: cache-control or etag), security (example: strict-transport-security or x-frame-options), redirects (example: location or refresh), timing (example: date or age), or custom headers. Each key represents an HTTP field name (lowercased), and its corresponding value is the value retrieved for that field. Collected during active scanning."
