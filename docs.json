@@ -136,36 +136,7 @@
       },        
       {
         "tab": "API Reference",
-        "groups": [
-          {
-            "group": "Authorization",
-            "pages": [
-              "autho"
-            ]
-          },
-          {
-            "group": "Rate Limiting",
-            "pages": [
-              "placeholder"
-            ]
-          },
-          {
-            "group": "Pagination",
-            "pages": [
-              "placeholder"
-            ]
-          },
-          {
-            "group": "Endpoints",
-            "openapi": "api-reference/api.yml"
-          },
-          {
-            "group": "Error Codes",
-            "pages": [
-              "placeholder"
-            ]
-          }
-        ]
+        "openapi": "https://petstore3.swagger.io/api/v3/openapi.json"
       },
       {
         "tab": "Troubleshooting",
@@ -194,7 +165,7 @@
         "tab": "Libraries",
         "pages": [
           "libraries"
-        ]
+        ],
       },
       {
         "tab": "FAQs",
