@@ -840,8 +840,8 @@ components:
               description: |
                 Mapping of HTTP cookies set by this indicator.
                 Each key represents the name of a cookie (all lowercase), and its corresponding value is the content retrieved for that cookie. Collected during active scanning.
-              properties:
-                oneOf:
+              additionalProperties:
+                anyOf:
                   - type: string
                   - type: array
                     items:
