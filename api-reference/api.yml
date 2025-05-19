@@ -47,8 +47,6 @@ components:
   schemas:
     IndicatorByValue:
       type: object
-      required:
-      - xx
       properties:
         qid:
           type: string
@@ -58,7 +56,7 @@ components:
           description: xx
         indicator:
           type: string
-          description: >-
+          description: >
             All boards are displayed visually in the UI. The field can still be sent, but it will have no functional effect in the UI.
         type:
           type: string
