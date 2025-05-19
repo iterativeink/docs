@@ -163,7 +163,7 @@
           },
           {
             "group": "Endpoints",
-            "openapi": "api-reference/pulsedive-api.yaml"
+            "openapi": "api-reference/pulsedive-api.yml"
           },
           {
             "group": "Error Codes",
