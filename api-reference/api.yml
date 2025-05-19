@@ -9,12 +9,4 @@ info:
     email: support@pulsedive.com
   description: >
     The API allows programmatic management of resources within Pulsedive.
-
-    Please report any discrepancies with actual API behavior to <a href="mailto:support@pulsedive.com">Pulsedive Support</a>.
-externalDocs:
-  url: https://pulsedive.mintlify.app
-servers:
-  - url: https://pulsedive.com
-tags:
-  - name: Indicators
-    description: Use this endpoint to research existing Indicators by ID or value.
+    Please report any discrepancies in API behavior to <a href="mailto:support@pulsedive.com">Pulsedive Support</a>.
