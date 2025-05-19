@@ -203,13 +203,8 @@
       },
       {
         "tab": "FAQs",
-        "groups": [
-          {
-            "group":"Frequently Asked Questions",
-            "pages": [
-              "faqs"
-            ]
-          }
+        "pages": [
+          "faqs"
         ]
       }
     ]
