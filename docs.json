@@ -142,7 +142,6 @@
       },        
       {
         "tab": "API Reference",
-        "openapi": "api-reference/testapi.yml",
         "groups": [
           {
             "group": "Authorization",
@@ -164,12 +163,10 @@
           },
           {
             "group": "Endpoints",
-            "pages": [
-              "placeholder"
-            ]
+            "openapi": "api-reference/testapi.yml",
           },
           {
-            "group": "Recipes",
+            "group": "Error Codes",
             "pages": [
               "placeholder"
             ]
