@@ -163,7 +163,7 @@
           },
           {
             "group": "Endpoints",
-            "openapi": "api-reference/testapi.yml",
+            "openapi": "api-reference/testapi.yml"
           },
           {
             "group": "Error Codes",
