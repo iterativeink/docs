@@ -73,7 +73,9 @@ paths:
           For compact output, set to 0.
         schema:
           type: integer
-          enum: [ 0, 1 ]
+          enum:
+          - 0
+          - 1
           default: 0
         examples:
           compact:
@@ -108,7 +110,7 @@ components:
       type: object
       properties:
         qid:
-          type: string
+          type: integer
           description: Unique identifier of the associated query, if available. Null indicates no query association.
         iid:
           type: integer
@@ -145,10 +147,24 @@ components:
           - critical
         manualrisk:
           type: integer
-          description: User-assigned risk override.
+          description: |
+            Indicates whether the risk score has been manually adjusted by a user.
+
+            When set to `1`, the risk score has been manually overridden by a user.
+            When set to `0`, the risk score reflects Pulsedive's assessment.
+          enum:
+          - 0
+          - 1
         retired:
-          type: string
-          description: Indicates whether this indicator is considered inactive or obsolete.
+          type: integer
+          description: |
+            Indicates whether this indicator is considered inactive or obsolete.
+
+            When set to `1`, this indicator is retired.
+            When set to `0`, this indicator is active.
+          enum:
+          - 0
+          - 1
         stamp_added:
           type: string
           description: Timestamp when this indicator was first added to Pulsedive.
@@ -167,6 +183,7 @@ components:
           format: date-time
         stamp_retired:
           type: string
+          format: date-time
           description: Timestamp when the indicator was retired in Pulsedive, if applicable.
           nullable: true
         recent:
@@ -213,13 +230,16 @@ components:
             from:
               type: array
               description: Other indicators that redirect to this indicator.
-              properties:
-                iid:
-                  type: integer
-                  description: Unique identifier of other indicator.
-                indicator:
-                  type: string
-                  description: Value for other indicator.
+              items:
+                type: object
+                description:
+                properties:
+                  iid:
+                    type: integer
+                    description: Unique identifier of other indicator.
+                  indicator:
+                    type: string
+                    description: Value for other indicator.
             to:
               type: array
               description: Other indicators that this indicator redirects to.
@@ -321,19 +341,16 @@ components:
               description: List of ports open/in use.
               items:
                 type: string
-                description: xx
             protocol:
               type: array
               description: List of network protocols in use.
               items:
-                types: string
-                description: xx
+                type: string
             technology:
               type: array
               description: List of technologies identified.
               items:
                 type: string
-                description: xx
         properties:
           type: object
           description: Detailed sub-properties for this indicator, grouped by data source.
@@ -365,257 +382,65 @@ components:
                   description: Name of the organization associated with this indicator.
             whois:
               type: object
-              description: Mapping of data sourced from WHOIS records (and any registry-specific extensions to the base WHOIS schema) for the indicator. May include information about the domain, registrar, registrant, admin and technical contacts, name servers, and registry-specific fields. Each key represents a WHOIS field name and the corresponding value is the value retrieved for that field. Lowercased. Where multiple values exist for the same key, the value will be an array of strings.
+              description: |
+                Mapping of data sourced from WHOIS records (and any registrar-specific extensions to the base WHOIS schema) for this indicator.
+                May include information about the domain, registrar, associated contacts, and registrar-specific fields.
+                Each key corresponds to a WHOIS field name, and the value represents the data retrieved for that field.
+                Where multiple values exist for the same field, the value will be presented as an array of strings.
+
+                Pulsedive provides supplemental fields that are not present in the original source.
+                The values for these fields are derived from raw data or parsed from other sources.
+                Supplemental fields are prefixed with a `++` symbol.
               properties:
-                admin country:
-                  type: string
-                  description: xx
-                registrant country:
-                  type: string
-                  description: xx
-                tech country:
-                  type: string
-                  description: xx
-                admin state/province:
-                  type: string
-                  description: xx
-                registrant state/province:
-                  type: string
-                  description: xx
-                tech state/province:
-                  type: string
-                  description: xx
-                creation date:
-                  type: string
-                  format: date-time
-                  description: xx
-                domain name:
-                  type: string
-                  description: xx
-                registrar iana id:
-                  type: string
-                  description: xx
-                registry domain id:
-                  type: string
-                  description: xx
-                name server:
-                  type: array
-                  description:
-                  items:
-                    type: string
-                    description: xx
-                tech name:
-                  type: string
-                  description: xx
-                registrant city:
-                  type: string
-                  description: xx
-                tech street:
-                  type: string
-                  description: xx
-                admin postal code:
-                  type: string
-                  description: xx
-                admin city:
-                  type: string
-                  description: xx
-                registrant postal code:
-                  type: string
-                  description: xx
-                admin name:
-                  type: string
-                  description: xx
-                tech city:
-                  type: string
-                  description: xx
-                registrant name:
-                  type: string
-                  description: xx
-                tech postal code:
-                  type: string
-                  description: xx
-                registrant street:
-                  type: string
-                  description: xx
-                admin street:
-                  type: string
-                  description: xx
-                admin fax:
-                  type: string
-                  description: xx
-                tech fax:
-                  type: string
-                  description: xx
-                admin phone:
-                  type: string
-                  description: xx
-                registrant fax:
-                  type: string
-                  description: xx
-                registrant phone:
-                  type: string
-                  description: xx
-                tech phone:
-                  type: string
-                  description: xx
-                ++gdpr:
-                  type: string
-                  description: Indicates whether the domain's WHOIS information is subject to General Data Protection Regulation (GDPR) restrictions.
-                dnssec:
-                  type: string
-                  description: xx
                 ++abuse:
                   type: string
                   description: Email address to report abuse related to the domain.
-                registrar whois server:
-                  type: string
-                  description: xx
-                registrar abuse contact phone:
-                  type: string
-                  description: xx
-                registrar abuse contact email:
-                  type: string
-                  description: xx
-                domain status:
-                  type: array
-                  description: xx
-                  items:
-                    type: string
-                ++registrar:
-                  type: string
-                  description: Name of the registrar managing the domain registration.
-                registrar:
-                  type: string
-                  description: xx
-                registrar url:
-                  type: string
-                  description: xx
-                registrant email:
-                  type: string
-                  description: xx
-                tech email:
-                  type: string
-                  description: xx
-                admin email:
-                  type: string
-                  description: xx
-                admin organization:
-                  type: string
-                  description: xx
-                registrant organization:
-                  type: string
-                  description: xx
-                tech organization:
-                  type: string
-                  description: xx
-                ++registered:
-                  type: string
-                  format: date-time
-                  description: Date when the domain was initially registered.
-                registrar registration expiration date:
-                  type: string
-                  format: date-time
-                  description: xx
-                ++updated:
-                  type: string
-                  format: date-time
-                  description: Date when the domain's WHOIS record was last updated.
-                updated date:
-                  type: string
-                  format: date-time
-                  description: xx
-                ++expires:
-                  type: string
-                  format: date-time
-                  description: Date when the domain's registration is set to expire, possibly including time and timezone. Normalizes the ISO date in registrar registration expiration date to YYYY-MM-DD HH:MM:SS.
-                country:
-                  type: string
-                  description: xx
-                status:
-                  type: string
-                  description: xx
-                domain:
-                  type: string
-                  format: uri
-                  description: xx
-                owner:
-                  type: string
-                  description: xx
-                owner-c:
-                  type: string
-                  description: xx
-                ownerid:
-                  type: string
-                  description: xx
-                responsible:
-                  type: string
-                  description: xx
-                created:
-                  type: array
-                  description: xx
-                  items:
-                    type: string
-                    description: xx
-                email:
-                  type: array
-                  description: xx
-                  items:
-                    type: string
-                    description: xx
-                nic-hdl-br:
-                  type: array
-                  description: xx
-                  items:
-                    type: string
-                    description: xx
-                changed:
-                  type: array
-                  description: xx
-                  items:
-                    type: string
-                    description: xx
-                person:
-                  type: array
-                  description: xx
-                  items:
-                    type: string
-                    description: xx
-                ++registrant:
-                  type: array
-                  description: Supplementary list of registrant names. May overlap with person or responsible.
-                  items:
-                    type: string
-                    description: xx
                 ++email:
                   type: array
                   description: List of email addresses associated with the domain registration. May include technical, administrative, or contact emails.
                   items:
                     type: string
                     description: xx
-                nserver:
-                  type: array
-                  description: xx
-                  items:
-                    type: string
-                    description: xx
-                tech-c:
+                ++expires:
                   type: string
-                  description: xx
-                expires:
+                  format: date-time
+                  description: Date when the domain's registration is set to expire, possibly including time and timezone. Normalizes the ISO date in registrar registration expiration date to YYYY-MM-DD HH:MM:SS.
+                ++gdpr:
                   type: string
-                  description: xx
-                nsstat:
-                  type: string
-                  description: xx
-                nslastaa:
-                  type: string
-                  description: xx
+                  description: Indicates whether the domain's WHOIS information is subject to General Data Protection Regulation (GDPR) restrictions.
                 ++phone:
                   type: array
                   description: List of phone numbers associated with the domain registration. May include technical, administrative, or contact phone numbers.
                 ++privacy:
                   type: string
                   description: Indicates whether WHOIS privacy protection is enabled.
+                ++registered:
+                  type: string
+                  format: date-time
+                  description: Date when the domain was initially registered.
+                ++registrant:
+                  type: array
+                  description: Supplementary list of registrant names. May overlap with person or responsible.
+                  items:
+                    type: string
+                ++registrar:
+                  type: string
+                  description: Name of the registrar managing the domain registration.
+                ++updated:
+                  type: string
+                  format: date-time
+                  description: Date when the domain's WHOIS record was last updated.
+              additionalProperties:
+                type: object
+                description: |
+                  Dynamic key-value pairs representing additional WHOIS data fields not explicitly defined above.
+                  Each key is a string representing the field name, and the value is an object containing the field's data.
+                  This allows for flexibility in capturing various data points without explicitly defining each possible field.
+                oneOf:
+                - type: string
+                - type: array
+                  items:
+                    type: string
             http:
               type: object
               description: "Data extracted from the HTTP response and headers. May include information about the result (example: status or code), server (example: server or x-powered-by), content (example: content-type or content-length), caching (example: cache-control or etag), security (example: strict-transport-security or x-frame-options), redirects (example: location or refresh), timing (example: date or age), or custom headers. Each key represents an HTTP field name (lowercased), and its corresponding value is the value retrieved for that field. Collected during active scanning."
