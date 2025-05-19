@@ -318,7 +318,8 @@ components:
                   type: string
                   description: xx
                 creation date:
-                  type: string timestamp xx
+                  type: string
+                  format: date-time
                   description: xx
                 domain name:
                   type: string
@@ -440,19 +441,24 @@ components:
                   type: string
                   description: xx
                 ++registered:
-                  type: string timestamp xx
+                  type: string
+                  format: date-time
                   description: xx
                 registrar registration expiration date:
-                  type: string timestamp xx
+                  type: string
+                  format: date-time
                   description: xx
                 ++updated:
-                  type: string timestamp xx
+                  type: string
+                  format: date-time
                   description: xx
                 updated date:
-                  type: string timestamp xx
+                  type: string
+                  format: date-time
                   description: xx
                 ++expires:
-                  type: string timestamp xx
+                  type: string
+                  format: date-time
                   description: xx
                 country:
                   type: string
@@ -597,7 +603,7 @@ components:
                   description: xx
                 date:
                   type: string
-                  format: date-time xx
+                  format: date-time
                 set-cookie:
                   type: string
                   description: xx
@@ -624,14 +630,14 @@ components:
                   type: string
                   description: xx
                 expires:
-                  type: string timestamp xx
-                  format: date-time xx
+                  type: string
+                  format: date-time
                   description: xx
                 fingerprint:
                   type: string
                   description: xx
                 valid:
-                  type: string timestamp xx
+                  type: string
                   format: date-time
                   description: xx
             dns:
