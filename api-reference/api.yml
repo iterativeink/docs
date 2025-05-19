@@ -52,6 +52,16 @@ paths:
               format: hostname
             - type: string
               format: uri
+          examples:
+            ip:
+              summary: IPv4 address
+              value: 8.8.8.8
+            domain:
+              summary: Domain name
+              value: microsoft.com
+            url:
+              summary: URL
+              value: https://puledive.com/explore
         - name: pretty
           in: query
           required: false
@@ -60,6 +70,13 @@ paths:
             type: integer
             enum: [0, 1]
             default: 0
+          examples:
+            compact:
+              summary: Compact output
+              value: 0
+            pretty:
+              summary: Pretty-printed output
+              value: 1            
 
       responses:
         '200':
