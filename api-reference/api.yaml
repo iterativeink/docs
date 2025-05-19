@@ -534,10 +534,11 @@ components:
               description: |
                 Mapping of data sourced from WHOIS records (and any registrar-specific extensions to the base WHOIS schema) for this indicator.
                 May include information about the domain, registrar, associated contacts, and registrar-specific fields.
+                
                 Each key corresponds to a WHOIS field name, and the value represents the data retrieved for that field.
                 Where multiple values exist for the same field, the value will be presented as an array of strings.
 
-                Pulsedive provides supplemental fields that are not present in the original source.
+                Pulsedive also provides supplemental fields that are not present in the original source data.
                 The values for these fields are derived from raw data or parsed from other sources.
                 Supplemental fields are prefixed with a `++` symbol.
               properties:
@@ -550,7 +551,7 @@ components:
                   description: List of email addresses associated with the domain registration. May include technical, administrative, or contact emails.
                   items:
                     type: string
-                    example: username@organization.org
+                  example: [username@organization.org]
                 ++expires:
                   type: string
                   format: sql-date-time
@@ -568,15 +569,13 @@ components:
 
                     When set to `1`, the data is subject to GDPR restrictions.
                     When set to `0`, the data is not restricted by GDPR.
-                  enum:
-                  - 0
-                  - 1
+                  enum: ["0", "1"]
                 ++phone:
                   type: array
                   description: List of phone numbers associated with the domain registration. May include technical, administrative, or contact phone numbers.
                   items:
                     type: string
-                    example: +1.646-693-5324
+                  example: ["+1.646-693-5324"]
                 ++privacy:
                   type: string
                   description: |
@@ -584,9 +583,7 @@ components:
 
                     When set to `1`, privacy protection is enabled.
                     When set to `0`, privacy protect is not enabled.
-                  enum:
-                  - 0
-                  - 1
+                  enum: ["0","1"]
                 ++registered:
                   type: string
                   format: sql-date-time
@@ -602,7 +599,7 @@ components:
                   description: Supplementary list of registrant names. Derived from `registrant name` and `registrant organization`.
                   items:
                     type: string
-                    example: [Zero Cool, Titan Digital]
+                  example: ["Zero Cool", "Titan Digital"]
                 ++registrar:
                   type: string
                   description: Name of the registrar managing the domain registration.
@@ -617,17 +614,19 @@ components:
                     Date and time in 'YYYY-MM-DD HH:MM:SS' format. Time is in 24-hour format with no timezone.
                     Normalizes the ISO date in `updated date`.
                   example: '2025-05-19 14:23:45'
-                type: object
-                  description: |
-                  Dynamic key-value pairs representing WHOIS data field names and values.
-                additionalProperties:
-                  anyOf:
-                    - type: string
-                      description: Each `{key}` represents the name of a WHOIS data field. The `{value}` string contains the content retrieved for that field.
-                    - type: array
-                      items:
-                        type: string
-                        description: |
+              additionalProperties:
+                anyOf:
+                  - type: string
+                    description: |
+                      Dynamic key-value pairs representing WHOIS data field names and values.
+
+                      Each `{key}` represents the name of a WHOIS data field. The `{value}` string contains the content retrieved for that field.
+                  - type: array
+                    items:
+                      type: string
+                      description: |
+                        Dynamic key-value pairs representing WHOIS data field names and values.
+
                         Each `{key}` represents the name of a WHOIS data field. The `{value}` array contains multiple pieces of content retrieved for that field.
             http:
               type: object
