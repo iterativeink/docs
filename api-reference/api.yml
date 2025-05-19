@@ -11,9 +11,20 @@ info:
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
+  contact:
+    email: support@pulsedive.com
     
+externalDocs:
+  url: https://pulsedive.mintlify.app
+
 servers:
   - url: https://www.pulsedive.com
+
+tags:
+  - name: Indicators
+    description: Look up known indicators.
+  - name: Threats
+    description: Look up known threats.
 
 paths:
   /api/info.php:
