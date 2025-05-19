@@ -6,9 +6,12 @@ info:
     The Pulsedive API lets you programmatically manage resources within Pulsedive.
     Users can look up known indicators and threats, enrich and investigate indicators, query Pulsedive data, and automate workflows.
     If an API key is provided, the rate limit is higher.
-    
-    Please report any discrepancies in API behavior to <a href="mailto:support@pulsedive.com">Pulsedive Support</a>.
 
+    Please report any discrepancies in API behavior to <a href="mailto:support@pulsedive.com">Pulsedive Support</a>.
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+    
 servers:
   - url: https://www.pulsedive.com
 
