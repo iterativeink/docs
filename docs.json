@@ -142,7 +142,7 @@
       },        
       {
         "tab": "API Reference",
-        "openapi": "api-reference/testapi",
+        "openapi": "api-reference/testapi.yml",
         "groups": [
           {
             "group": "Authorization",
