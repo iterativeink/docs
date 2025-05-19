@@ -28,15 +28,15 @@
               "intro-pulsedive/pulsedive",
               "intro-pulsedive/risk-scoring",
               "intro-pulsedive/platform",
-              "intro-pulsedive/data-privacy",
-              {
-                "group": "Threat Intelligence Fundamentals",
-                "pages": [
-                  "intro-threat-intelligence/index",
-                  "intro-threat-intelligence/concepts",
-                  "intro-threat-intelligence/glossary"
-                ]
-              }
+              "intro-pulsedive/data-privacy"
+            ]
+          },
+          {
+            "group": "Threat Intelligence Fundamentals",
+            "pages": [
+              "intro-threat-intelligence/index",
+              "intro-threat-intelligence/concepts",
+              "intro-threat-intelligence/glossary"
             ]
           },
           {
