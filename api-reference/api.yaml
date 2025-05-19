@@ -227,7 +227,7 @@ components:
           example: '2025-05-19 14:23:45'
         stamp_probed:
           type: string
-          format: date-time
+          format: sql-date-time
           pattern: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$'
           description: |
             Timestamp when the indicator was last actively scanned (probed) by Pulsedive.
@@ -465,8 +465,9 @@ components:
                 example: '2025-05-19 14:23:45'
               uid:
                 type: integer
-                description: Unique identifier for the user who created the comment.
-                Visible to only the user who submitted the comment.
+                description: |
+                  Unique identifier for the user who created the comment.
+                  Visible to only the user who submitted the comment.
         attributes:
           type: object
           description: Technical metadata observed for this indicator.
