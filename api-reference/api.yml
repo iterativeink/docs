@@ -45,13 +45,7 @@ paths:
           required: true
           description: Value of the indicator to retrieve. May be a domain name, IP address, or URL.
           schema:
-            oneOf:
-            - type: string
-              format: ipv4
-            - type: string
-              format: hostname
-            - type: string
-              format: uri
+            type: string
           examples:
             ip:
               summary: IPv4 address
@@ -65,7 +59,9 @@ paths:
         - name: pretty
           in: query
           required: false
-          description: Indicates whether to format returned JSON results.
+          description: |
+            Indicates whether to format returned JSON results.
+            For pretty-printed output, set to 1. For compact output, set to 0.
           schema:
             type: integer
             enum: [0, 1]
@@ -76,7 +72,7 @@ paths:
               value: 0
             pretty:
               summary: Pretty-printed output
-              value: 1            
+              value: 1
 
       responses:
         '200':
