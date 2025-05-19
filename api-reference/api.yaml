@@ -619,7 +619,7 @@ components:
                   example: '2025-05-19 14:23:45'
                 type: object
                 additionalProperties:
-                  anyOf:
+                  oneOf:
                     - type: string
                     - type: array
                       items:
@@ -835,20 +835,26 @@ components:
             banners:
               type: object
               description: Mapping of port numbers (as strings) to service banner strings. Each key represents a port number, and its corresponding value is the banner retrieved from that port. Collected during active scanning.
-            dom:
+            cookies:
+              type: object
+              description: |
+                Mapping of HTTP cookies set by this indicator.
+                Each key represents the name of a cookie (all lowercase), and its corresponding value is the content retrieved for that cookie. Collected during active scanning.
+              properties:
+                oneOf:
+                  - type: string
+                  - type: array
+                    items:
+                      type: string
+              dom:
               type: object
               description: Data related to the Document Object Model (DOM) of this indicator. Collected during active scanning.
               properties:
                 screenshot:
                   type: string
+                  format: url
                   description: URL of a screenshot of the loaded page.
-            cookies:
-              type: object
-              description: Mapping of HTTP cookies set by this indicator. Each key is the name of a cookie, and its corresponding value is the cookie's content. Collected during active scanning.
-              properties:
-                phpsessid:
-                  type: string
-                  description: xx
+                  example: https://sandbox.pulsedive.com/screenshots/4179fbe377b84604ba4eaee47f5de9d2.jpeg
 
     ErrorResponse:
       type: object
