@@ -5,7 +5,8 @@ info:
   description: |
     The Pulsedive API lets you programmatically manage resources within Pulsedive.
     Users can look up known indicators and threats, enrich and investigate indicators, query Pulsedive data, and automate workflows.
-    If an API key is provided, the rate limit is higher.
+   
+    API key authentication is optional. However, requests without a key are rate-limited more aggressively. We recommend including an API key for better performance and reliability.
 
     Please report any discrepancies in API behavior to <a href="mailto:support@pulsedive.com">Pulsedive Support</a>.
   license:
@@ -21,7 +22,8 @@ servers:
   - url: https://www.pulsedive.com
 
 security:
-  - ApiKeyAuth: [] # Optional authentication
+  - ApiKeyAuth: [] # Optional authentication; rate limits are higher if authenticated.
+  - {}
 
 tags:
   - name: Indicators
