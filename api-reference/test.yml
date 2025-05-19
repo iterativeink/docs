@@ -1,0 +1,214 @@
+openapi: 3.0.3
+info:
+  title: Pulsedive API
+  version: "1.0"
+  description: |
+    The Pulsedive API allows users to retrieve threat intelligence indicators by value.
+    If an API key is provided, the rate limit is higher.
+
+servers:
+- url: https://www.pulsedive.com
+
+paths:
+  /api/info.php:
+    get:
+      security:
+      - ApiKeyAuth: [] # Optional authentication
+      tags:
+      - Indicators
+      summary: Get Indicator By Value
+      description: Retrieve detailed threat intelligence information for a specific indicator.
+      parameters:
+      - name: indicator
+        in: query
+        required: true
+        schema:
+          type: string
+        description: The indicator value to search (e.g., domain, IP, URL).
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Set to "1" for formatted JSON output.
+      responses:
+        '200':
+          description: Successful response with indicator information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IndicatorResponse'
+
+components:
+  schemas:
+    IndicatorResponse:
+      type: object
+      properties:
+        qid:
+          type: string
+          nullable: true
+        iid:
+          type: integer
+        indicator:
+          type: string
+        type:
+          type: string
+        risk:
+          type: string
+        risk_recommended:
+          type: string
+        manualrisk:
+          type: integer
+        retired:
+          type: string
+          nullable: true
+        stamp_added:
+          type: string
+          format: date-time
+        stamp_updated:
+          type: string
+          format: date-time
+        stamp_seen:
+          type: string
+          format: date-time
+        stamp_probed:
+          type: string
+          format: date-time
+        stamp_retired:
+          type: string
+          nullable: true
+        recent:
+          type: integer
+        submissions:
+          type: integer
+        umbrella_rank:
+          type: integer
+        umbrella_domain:
+          type: string
+        riskfactors:
+          type: array
+          items:
+            $ref: '#/components/schemas/RiskFactor'
+        redirects:
+          type: object
+          properties:
+            from:
+              type: array
+              items: {}
+            to:
+              type: array
+              items:
+                $ref: '#/components/schemas/Redirect'
+        threats:
+          type: array
+          items: {}
+        feeds:
+          type: array
+          items: {}
+        comments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comment'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        properties:
+          type: object
+          properties:
+            meta:
+              $ref: '#/components/schemas/Meta'
+            # Add others here (geo, whois, http, etc.) as needed
+          additionalProperties:
+            type: object
+        cookies:
+          type: object
+          additionalProperties:
+            type: string
+
+    RiskFactor:
+      type: object
+      properties:
+        rfid:
+          type: integer
+        description:
+          type: string
+        risk:
+          type: string
+
+    Redirect:
+      type: object
+      properties:
+        iid:
+          type: integer
+        indicator:
+          type: string
+
+    Comment:
+      type: object
+      properties:
+        cid:
+          type: integer
+        username:
+          type: string
+        title:
+          type: string
+        comment:
+          type: string
+        stamp_added:
+          type: string
+          format: date-time
+        stamp_updated:
+          type: string
+          format: date-time
+
+    Meta:
+      type: object
+      properties:
+        viewport:
+          type: string
+        charset:
+          type: string
+        keywords:
+          type: string
+        description:
+          type: string
+        author:
+          type: string
+        version:
+          type: string
+        assets:
+          type: string
+          format: uri
+        twitter:card:
+          type: string
+        twitter:site:
+          type: string
+        twitter:title:
+          type: string
+        twitter:description:
+          type: string
+        twitter:creator:
+          type: string
+        twitter:image:
+          type: string
+          format: uri
+        og:title:
+          type: string
+        og:description:
+          type: string
+        og:url:
+          type: string
+          format: uri
+        og:image:
+          type: string
+          format: uri
+        ++title:
+          type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: key
