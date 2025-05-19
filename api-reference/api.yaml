@@ -20,6 +20,8 @@ servers:
 - url: https://www.pulsedive.com
 
 tags:
+- name: Authorization
+  
 - name: Indicators
   description: Look up known indicators.
 - name: Threats
