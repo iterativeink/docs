@@ -791,64 +791,35 @@ components:
               type: object
               description: Website metadata extracted from the HTML <head> tag. May include standard WC3 meta tags (for example, charset), SEO and crawling tags (for example, description, robots), social media platform meta tags (for example, twitter:card or og:card), or custom meta tags. Each key represents a meta tag type, and its corresponding value is the value retrieved from that meta tag.Collected during active scanning.
               properties:
-                viewport:
-                  type: string
-                  description: xx
-                twitter:card:
-                  type: string
-                  description: xx
-                twitter:site:
-                  type: string
-                  description: xx
-                charset:
-                  type: string
-                  description: xx
                 ++title:
                   type: string
                   description: Title of the website collected from the HTML <title> tag in the <head> tag.
-                keywords:
-                  type: string
-                  description: xx
-                twitter:title:
-                  type: string
-                  description: xx
-                assets:
-                  type: string
-                  description: xx
-                  format: uri
-                og:title:
-                  type: string
-                  description: xx
-                og:description:
-                  type: string
-                  description: xx
-                description:
-                  type: string
-                  description: xx
-                twitter:description:
-                  type: string
-                  description: xx
-                og:url:
-                  type: string
-                  description: xx
-                  format: uri
-                author:
-                  type: string
-                  description: xx
-                twitter:creator:
-                  type: string
-                  description: xx
-                twitter:image:
-                  type: string
-                  description: xx
-                  format: uri
-                og:image:
-                  type: string
-                  description: xx
-                  format: uri
-                version:
-                  type: string
-                  description: xx
+                  example: "Threat Intelligence - Pulsedive"
+              additionalProperties:
+                anyOf:
+                  - type: string
+                    description: |
+                      Dynamic key-value pairs representing website metadata tags and values.
+
+                      Each `{key}` represents the name of metadata tag. The `{value}` string contains the value retrieved for that tag.
+                  - type: array
+                    items:
+                      type: string
+                      description: |
+                        Dynamic key-value pairs representing website metadata tags and values.
+
+                        Each `{key}` represents the name of a metadata tag. The `{value}` array contains multiple values retrieved for that tag.
+                example:
+                  Content-Type: "text/html; charset=UTF-8"
+                  "og:image":
+                    - "https://example.com/image1.jpg"
+                    - "https://example.com/image2.jpg"
+              example:
+                ++title: "Threat Intelligence - Pulsedive"
+                Content-Type: "text/html; charset=UTF-8"
+                "og:image":
+                  - "https://example.com/image1.jpg"
+                  - "https://example.com/image2.jpg"
             banners:
               type: object
               description: |
