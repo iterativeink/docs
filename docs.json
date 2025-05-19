@@ -121,7 +121,15 @@
       },        
       {
         "tab": "API Reference",
-        "openapi": "api-reference/api.yaml"
+        "openapi": "api-reference/api.yaml",
+        "groups": [
+          {
+            "group": "Endpoints",
+            "pages": [
+              "api-reference/endpoints"
+            ]
+          }
+        ]
       },
       {
         "tab": "Troubleshooting",
