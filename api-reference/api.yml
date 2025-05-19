@@ -83,6 +83,7 @@ paths:
         required: false
         description: |
           Your Pulsedive API key.
+          
           API key authentication is optional. However, requests without a key are rate-limited more aggressively. We recommend including an API key for better performance and reliability.
         schema:
           type: string
