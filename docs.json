@@ -168,14 +168,9 @@
         ]
       },
       {
-        "tab": "SDKs",
-        "groups": [
-          {
-            "group": "Community",
-            "pages": [
-              "comm"
-            ]
-          }
+        "tab": "Libraries",
+        "pages": [
+          "libraries"
         ]
       },
       {
