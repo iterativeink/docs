@@ -246,7 +246,8 @@
     "socials": {
       "twitter": "https://twitter.com/pulsedive",
       "github": "https://github.com/pulsedive",
-      "linkedin": "https://www.linkedin.com/company/pulsedive/"
+      "linkedin": "https://www.linkedin.com/company/pulsedive/",
+      "slack": "https://pulsedive.slack.com"
     }
   }
 }
