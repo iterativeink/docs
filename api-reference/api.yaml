@@ -618,15 +618,17 @@ components:
                     Normalizes the ISO date in `updated date`.
                   example: '2025-05-19 14:23:45'
                 type: object
+                  description: |
+                  Dynamic key-value pairs representing WHOIS data field names and values.
                 additionalProperties:
-                  oneOf:
+                  anyOf:
                     - type: string
+                      description: Each `{key}` represents the name of a WHOIS data field. The `{value}` string contains the content retrieved for that field.
                     - type: array
                       items:
                         type: string
-                description: |
-                  Dynamic key-value pairs representing additional WHOIS data fields not explicitly defined above.
-                  Each key is a string representing the field name, and the value is an object containing the field's data.
+                        description: |
+                        Each `{key}` represents the name of a WHOIS data field. The `{value}` array contains multiple pieces of content retrieved for that field.
             http:
               type: object
               description: "Data extracted from the HTTP response and headers. May include information about the result (example: status or code), server (example: server or x-powered-by), content (example: content-type or content-length), caching (example: cache-control or etag), security (example: strict-transport-security or x-frame-options), redirects (example: location or refresh), timing (example: date or age), or custom headers. Each key represents an HTTP field name (lowercased), and its corresponding value is the value retrieved for that field. Collected during active scanning."
@@ -844,12 +846,12 @@ components:
                 anyOf:
                   - type: string
                     description: |
-                      Each `{key}` represents the name of a cookie (all lowercase), and the corresponding `{value}` string is the content retrieved for that cookie.
+                      Each `{key}` represents the name of a cookie. The `{value}` string contains the content retrieved for that cookie.
                   - type: array
                     items:
                       type: string
                     description: |
-                      Each `{key}` represents the name of a cookie (all lowercase), and its corresponding `{value}` array is the content retrieved for that cookie.
+                      Each `{key}` represents the name of a cookie. The `{value}` array contains multiple pieces of content retrieved for that cookie.
             dom:
               type: object
               description: Data related to the Document Object Model (DOM) of this indicator. Collected during active scanning.
