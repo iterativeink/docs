@@ -867,7 +867,7 @@ components:
                       Each `{key}` matches a port number. The `{value}` array contains multiple banners retrieved for that port.
               example:
                 "22": "SSH-2.0-OpenSSH_7.4\n"
-                "143": "* OK [CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE NAMESPACE LITERAL+ STARTTLS AUTH=PLAIN AUTH=LOGIN] Dovecot ready.\n"
+                "143": ["* OK [CAPABILITY IMAP4rev1 STARTTLS LOGINDISABLED] Dovecot ready.\n", "* PREAUTH [CAPABILITY IMAP4rev1 SASL-IR] Logged in as user\n"]
             cookies:
               type: object
               description: |
@@ -887,6 +887,7 @@ components:
               example:
                 _ga: "GA1.1.1991921685.1744247816"
                 _ga_g550td8bzn: "GS1.1.1744247869.1.0.1744247869.0.0.0"
+                token: ["abc","def"]
             dom:
               type: object
               description: Data related to the Document Object Model (DOM) of this indicator. Collected during active scanning.
