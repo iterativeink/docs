@@ -17,10 +17,7 @@
     "dark": "#48484a"
   },
   "background": {
-    "color": {
-      "light": "#3094c2",
-      "dark": "#48484a"
-    }
+    "decoration": "gradient"
   },
   "favicon": "https://pulsedive.com/img/favicon.png",
   "navigation": {
