@@ -124,12 +124,12 @@
       },        
       {
         "tab": "API Reference",
-        "openapi": "api-reference/api.yaml",
-          "pages": [
-            "api-reference/authorization",
-            "api-reference/rate-limit",
-            "api-reference/pagination"
-          ]
+        "pages": [
+          "api-reference/authorization",
+          "api-reference/rate-limit",
+          "api-reference/pagination",
+          "api-reference/api.yaml"
+        ]
       },
       {
         "tab": "Troubleshooting",
