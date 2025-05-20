@@ -729,18 +729,24 @@ components:
                 org:
                   type: string
                   description: Common Name (CN) of the specific certificate authority that signed the certificate, extracted from the issuer field.
-                  example: "WE1", "R11"
+                  example:
+                  - "WE1"
+                  - "R11"
                 ip:
                   type: string
                   format:
                     - ipv4
                     - ipv6
                   description: IP address of the server presenting the certificate, if resolved.
-                  example: "162.159.36.1", "2606:4700:4700::1001"
+                  example:
+                  - "162.159.36.1"
+                  - "2606:4700:4700::1001"
                 issuer:
                   type: string
                   description: Full Distinguished Name (DN) of the Certificate Authority (CA) that issued the certificate. Includes components like country (C), organization (O), and common name (CN).
-                  example: "/C=US/O=Google Trust Services/CN=WE1", "/C=US/O=Let's Encrypt/CN=R11"
+                  example: 
+                  - "/C=US/O=Google Trust Services/CN=WE1"
+                  - "/C=US/O=Let's Encrypt/CN=R11"
                 expires:
                   type: string
                   format: sql-date-time
