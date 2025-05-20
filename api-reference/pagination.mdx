@@ -1,0 +1,147 @@
+---
+title: `Pagination`
+description: `Pagination with API`
+---
+
+<Note>
+Free API users are limited to a single page of results.
+</Note>
+
+Pagination helps manage large datasets by breaking them into smaller, more manageable pages. The Pulsedive API supports offset-based pagination for:
+
+- search requests
+- requests for linked indicators from threats or feeds
+
+When a response includes more than 15,000 records, it is automatically split into multiple pages.
+
+## How pagination works
+
+If your request returns more than 15,000 results, the Pulsedive API includes pagination fields in the response:
+
+- `page_current`: Current page number (starts at `0`)
+- `page_next`: Page number for the next request, if additional results are available
+
+Here's what the first page of a paginated response might look like:
+
+```json
+{
+  "page_current": 0,
+  "page_next": 1,
+  "results": [
+    {
+      "iid": 918421,
+      "indicator": "185.220.100.255",
+      "type": "ip",
+      "risk": "low",
+      "stamp_linked": "2018-11-18 11:46:55",
+      "summary": {
+        "properties": {
+          ...
+        }
+      }
+    },
+    ...
+  ]
+}
+```
+
+<Note>
+If a response returns fewer than 15,000 results, pagination fields (`page_current`, `page_next`) are not included.
+</Note>
+
+## Requesting additional pages
+
+To get the next page of results, resend the same request but set the page parameter to the value of `page_next` from your last response. Repeat this process until `page_next` is no longer returned—-this means you’ve reached the end of the data.
+
+### Example First Request
+
+```json
+{
+  "fid": "19",
+  "get": "links",
+  "pretty": "1",
+  "key": "your_api_key"
+}
+```
+
+### First Response
+
+```json
+{
+  "page_current": 0,
+  "page_next": 1,
+  "results": [
+    {
+      "iid": 918421,
+      "indicator": "185.220.100.255",
+      "type": "ip",
+      "risk": "low",
+      "stamp_linked": "2018-11-18 11:46:55",
+      "summary": {
+        "properties": {
+          ...
+        }
+      }
+    },
+    ...
+  ]
+}
+```
+
+### Example Second Request
+
+This request uses the value of `page_next` from the first response to populate the `page` parameter:
+
+```json
+{
+  "fid": "19",
+  "get": "links",
+  "pretty": "1",
+  "key": "your_api_key",
+  "page": "1"
+}
+```
+
+### Second Response
+
+```json
+{
+  "page_current": 1,
+  "page_next": 2,
+  "results": [
+    {
+      "iid": 95352,
+      "indicator": "191.20.101.211",
+      "type": "domain",
+      "risk": "medium",
+      "stamp_linked": "2021-04-23 05:22:12",
+      "summary": {
+        "properties": {
+          ...
+        }
+      }
+    },
+    ...
+  ]
+}
+```
+
+Continue making requests using the most recent `page_next` value until it is no longer present in the response.
+
+<Note>
+Each page contains up to 15,000 records. This limit is hard-coded.
+</Note>
+
+## Troubleshooting
+
+### Can I go back to a previous page?
+
+No. Pagination is forward-only. You must request pages sequentially. If you skip a page or need to start over, begin again from page 0. 
+
+### How do I know when I’ve reached the last page?
+
+When the API stops returning a `page_next` value, you have reached the final page of results.
+
+## Can I jump to a specific page?
+
+Technically, you can request any numeric page, but skipping ahead or accessing pages out of order can lead to inconsistent results—-especially if the dataset has changed between requests. For best results, always follow the sequence provided by `page_next`.
