@@ -142,6 +142,6 @@ No. Pagination is forward-only. You must request pages sequentially. If you skip
 
 When the API stops returning a `page_next` value, you have reached the final page of results.
 
-## Can I jump to a specific page?
+### Can I jump to a specific page?
 
 Technically, you can request any numeric page, but skipping ahead or accessing pages out of order can lead to inconsistent results&mdash;especially if the dataset has changed between requests. For best results, always follow the sequence provided by `page_next`.
