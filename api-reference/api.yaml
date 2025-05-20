@@ -655,11 +655,11 @@ components:
               properties:
                 ++code:
                   type: string
-                  description: Code portion of the HTTP status code returned with the page response. It indicates the result of the HTTP request. Internal/extended metadata.
+                  description: Code portion of the HTTP status code returned with the page response. It indicates the result of the HTTP request.
                   example: "200"
                 ++status:
                   type: string
-                  description: Status portion of the HTTP status code returned with the page response. It indicates the result of the HTTP request. Internal/extended metadata.
+                  description: Status portion of the HTTP status code returned with the page response. It indicates the result of the HTTP request.
                   example: "OK"
                 ++content-type:
                   type: string
@@ -760,9 +760,10 @@ components:
                   example: "ECDHE-RSA-AES256-GCM-SHA384"
             dns:
               type: object
-              description: Domain-related information for this indicator gathered from public DNS resolvers. Collected during active scanning.
+              description: |
+                Domain-related information for this indicator gathered from public DNS resolvers. Collected during active scanning.
 
-              Each `{key}` matches a port number. The corresponding value may be a string or an array of strings, depending on how many banners were retrieved for that port.
+                Each `{key}` matches a port number. The corresponding value may be a string or an array of strings, depending on how many banners were retrieved for that port.
               additionalProperties:
                 anyOf:
                 - type: string
