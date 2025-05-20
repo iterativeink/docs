@@ -125,16 +125,17 @@
         "tab": "API Reference",
         "groups": [
           {
-            "group": "Endpoints",
-            "openapi": "api-reference/api.yaml"
-          },
-          {
-            "group": "API Factors",
+            "group": "Getting Started",
             "pages": [
+              "api-reference/introduction",
               "api-reference/authorization",
               "api-reference/rate-limit",
               "api-reference/pagination"
             ]
+          },
+          {
+            "group": "Endpoints",
+            "openapi": "api-reference/api.yaml"
           }
         ]
       },
