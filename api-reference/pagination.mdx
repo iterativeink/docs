@@ -1,6 +1,6 @@
 ---
 title: 'Pagination'
-description: 'Pagination with API'
+description: 'Retrieve large sets of data using pagination with the Pulsedive API.'
 ---
 
 <Note>
@@ -51,7 +51,7 @@ If a response returns fewer than 15,000 results, pagination fields (`page_curren
 
 ## Requesting additional pages
 
-To get the next page of results, resend the same request but set the page parameter to the value of `page_next` from your last response. Repeat this process until `page_next` is no longer returned—-this means you’ve reached the end of the data.
+To get the next page of results, resend the same request but set the page parameter to the value of `page_next` from your last response. Repeat this process until `page_next` is no longer returned&mdash;this means you’ve reached the end of the data.
 
 ### Example First Request
 
@@ -144,4 +144,4 @@ When the API stops returning a `page_next` value, you have reached the final pag
 
 ## Can I jump to a specific page?
 
-Technically, you can request any numeric page, but skipping ahead or accessing pages out of order can lead to inconsistent results—-especially if the dataset has changed between requests. For best results, always follow the sequence provided by `page_next`.
+Technically, you can request any numeric page, but skipping ahead or accessing pages out of order can lead to inconsistent results&mdash;especially if the dataset has changed between requests. For best results, always follow the sequence provided by `page_next`.
