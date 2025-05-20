@@ -77,7 +77,7 @@
           {
             "group": "Query Data",
             "pages": [
-              "query/explore-language",
+              "query/query-language",
               "query/build-query",
               "query/search-indicator",
               "query/search-bulk",
@@ -91,8 +91,7 @@
               "automate/indicator-enrichment-workflow",
               "automate/centralized-intel-pipeline",
               "automate/integrate-soar-playbook",
-              "automate/schedule-feed",
-              "automate/threat-hunting"
+              "automate/schedule-feed"
             ]
           },
           {

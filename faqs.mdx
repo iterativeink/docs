@@ -1,16 +1,33 @@
 ---
 title: 'Frequently Asked Questions'
-description: Find answers to common questions about Pulsedive.
+description: 'Get quick answers to the most common questions about Pulsedive.'
 ---          
               
 ## How can I retrieve information about multiple indicators simultaneously?
 
-Using the Analyze tool in the Dashboard, you may input several files containing IPs, URLs, and domains. The maximum amount of items you may parse depends on which plan you’re enrolled in. You may also use the Analyze API endpoint for bulk queries.
+You can analyze multiple IPs, URLs, and domains at the same time using the Analyze tool in the Pulsedive Dashboard. Upload one or more files containing your indicators, and Pulsedive will parse and evaluate them in bulk.
+
+The number of items you can process at once depends on your subscription plan.
               
 ## What is the difference between Pulsedive Community and Pulsedive Enterprise?
 
-Pulsedive Community is a public database of threats and indicators that is frequently queried and contributed to. Pulsedive Enterprise is an unlimited private database with additional features, such as IP whitelisting, IOC bulk management, and an onboarding process.
-             
-## Where can I find the latest additions to Pulsedive's database?
+Pulsedive Community is our shared threat intelligence platform, accessible through several plans, including a free tier. It’s a public, actively updated database powered by user contributions and open-source intelligence, ideal for researchers, analysts, and defenders looking to enrich investigations or explore threats at scale.
 
-Pulsedive's Feed produces a scored export of the latest cyber threat intelligence. The Light plan detects and alerts about high-risk indicators that are currently active.
+Pulsedive Enterprise, by contrast, is a dedicated platform built on the same core as Community but hosted separately for each organization. It includes all Community features, but with added control, scalability, and security:
+
+- A private, isolated threat intelligence database
+- Separate user accounts, indicators, threats, and source feeds
+- IP whitelisting and advanced access controls
+- Bulk IOC management and automation workflows
+- Enterprise API and Feed access--without needing separate subscriptions
+- Onboarding support and customer success resources
+
+Enterprise instances are fully siloed: data isn’t shared between customers or with the public Community platform, giving organizations full control over their threat intelligence environment.
+
+## What’s the difference between passive scanning, active scanning, and submitting?
+
+Pulsedive gives you flexible ways to investigate indicators, whether you want a quick look or to store results for future use:
+
+- **Passive scan**: Gathers information about an indicator without reaching out to it directly. It pulls existing data, making it a discreet and safe way to enrich an indicator. Passive scans are the default when you search for a new indicator that’s not already in the database.
+- **Active scan**: Reaches out to the indicator to collect live data. This includes checking open ports and fetching web content using a headless browser. It provides deeper visibility but is more "noisy", meaning the target may detect the scan.
+- **Submit**: Runs an active scan and stores the results in the Pulsedive database. Once submitted, the indicator becomes part of the dataset, and future scans will update the existing entry. Submitting is ideal when you want to contribute to threat intelligence or retain scan results for continued analysis.
