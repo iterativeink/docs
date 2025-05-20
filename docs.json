@@ -16,6 +16,12 @@
     "light": "#3094c2",
     "dark": "#48484a"
   },
+  "background": {
+    "color": {
+      "light": "#3094c2",
+      "dark": "#48484a"
+    }
+  },
   "favicon": "https://pulsedive.com/img/favicon.png",
   "navigation": {
     "tabs": [
