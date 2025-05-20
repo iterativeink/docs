@@ -74,7 +74,7 @@
           {
             "group": "Query Data",
             "pages": [
-              "query/query-language",
+              "query/explore-language",
               "query/build-query",
               "query/search-indicator",
               "query/search-bulk",
