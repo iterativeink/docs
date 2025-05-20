@@ -125,7 +125,7 @@
         "tab": "API Reference",
         "groups": [
           {
-            "group": "Using the Pulsedive API",
+            "group": "Using the API",
             "pages": [
               "api-reference/introduction",
               "api-reference/authorization",
