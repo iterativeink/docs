@@ -130,7 +130,7 @@
             "openapi": "api-reference/api.yaml"
           },
           {
-            "group": "Reference",
+            "group": "API Factors",
             "pages": [
               "api-reference/authorization",
               "api-reference/rate-limit",
