@@ -85,7 +85,7 @@ paths:
         required: false
         description: |
           Your Pulsedive API key.
-          
+
           API key authentication is optional. However, requests without a key are rate-limited more aggressively. We recommend including an API key for better performance and reliability.
         schema:
           type: string
@@ -182,7 +182,7 @@ components:
             Indicates whether this indicator is inactive or obsolete.
 
             An indicator is automatically retired if, in the past three months, it has not been:
-           
+
             - Reported using the Seen button in the Pulsedive UI
             - Observed in any source feeds
             - Submitted through the Analyze section of the Pulsedive UI
@@ -221,7 +221,7 @@ components:
           pattern: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$'
           description: |
             Timestamp when the indicator was last reported or seen in feeds or user submissions in Pulsedive.
-            
+
             Date and time in 'YYYY-MM-DD HH:MM:SS' format. Time is in 24-hour format with no timezone.
           nullable: true
           example: '2025-05-19 14:23:45'
@@ -231,7 +231,7 @@ components:
           pattern: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$'
           description: |
             Timestamp when the indicator was last actively scanned (probed) by Pulsedive.
-            
+
             Date and time in 'YYYY-MM-DD HH:MM:SS' format. Time is in 24-hour format with no timezone.
           nullable: true
           example: '2025-05-19 14:23:45'
@@ -241,7 +241,7 @@ components:
           pattern: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$'
           description: |
             Timestamp when the indicator was retired in Pulsedive, if applicable.
-          
+
             Date and time in 'YYYY-MM-DD HH:MM:SS' format. Time is in 24-hour format with no timezone.
           nullable: true
           example: '2025-05-19 14:23:45'
@@ -388,7 +388,7 @@ components:
                 pattern: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$'
                 description: |
                   Timestamp when the threat was linked to this indicator.
-            
+
                   Date and time in 'YYYY-MM-DD HH:MM:SS' format. Time is in 24-hour format with no timezone.
                 example: '2025-05-19 14:23:45'
         feeds:
@@ -423,7 +423,7 @@ components:
                 pattern: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$'
                 description: |
                   Timestamp when the feed was linked to this indicator.
-            
+
                   Date and time in 'YYYY-MM-DD HH:MM:SS' format. Time is in 24-hour format with no timezone.
                 example: '2025-05-19 14:23:45'
         comments:
@@ -454,7 +454,7 @@ components:
                 pattern: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$'
                 description: |
                   Timestamp when the comment was created.
-            
+
                   Date and time in 'YYYY-MM-DD HH:MM:SS' format. Time is in 24-hour format with no timezone.
                 example: '2025-05-19 14:23:45'
               stamp_updated:
@@ -463,7 +463,7 @@ components:
                 pattern: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$'
                 description: |
                   Timestamp when the comment was last modified.
-            
+
                   Date and time in 'YYYY-MM-DD HH:MM:SS' format. Time is in 24-hour format with no timezone.
                 example: '2025-05-19 14:23:45'
               uid:
@@ -480,19 +480,19 @@ components:
               description: List of ports open/in use.
               items:
                 type: string
-                example: ["443","80"]
+                example: [ "443", "80" ]
             protocol:
               type: array
               description: List of network protocols in use.
               items:
                 type: string
-                example: ["HTTP","HTTPS"]
+                example: [ "HTTP", "HTTPS" ]
             technology:
               type: array
               description: List of technologies identified.
               items:
                 type: string
-                example: ["Apache","jQuery"]
+                example: [ "Apache", "jQuery" ]
         properties:
           type: object
           description: Detailed sub-properties for this indicator, grouped by type or data source.
@@ -533,7 +533,7 @@ components:
               type: object
               description: |
                 Collection of data sourced from WHOIS records and registrar-specific extensions to the base WHOIS schema, along with supplemental fields provided by Pulsedive (marked with a `++` prefix). Includes details about the domain, its registrar, and related contacts.
-                
+
                 For standard WHOIS data, each key matches a field name from the record, and its value contains the corresponding content. If a field has multiple values, the values are listed as an array of strings.
 
                 Pulsedive's supplemental fields do not appear in the original source data. The values for these fields are derived from raw data or parsed from related sources to provide additional context.
@@ -547,7 +547,7 @@ components:
                   description: List of email addresses associated with the domain registration. May include technical, administrative, or contact emails.
                   items:
                     type: string
-                  example: [username1@organization1.org,username2@organization1.org, username@organization2.org]
+                  example: [ username1@organization1.org, username2@organization1.org, username@organization2.org ]
                 ++expires:
                   type: string
                   format: sql-date-time
@@ -565,13 +565,13 @@ components:
 
                     When set to `1`, the data is subject to GDPR restrictions.
                     When set to `0`, the data is not restricted by GDPR.
-                  enum: ["0", "1"]
+                  enum: [ "0", "1" ]
                 ++phone:
                   type: array
                   description: List of phone numbers associated with the domain registration. May include technical, administrative, or contact phone numbers.
                   items:
                     type: string
-                  example: ["+1.646-693-5324"]
+                  example: [ "+1.646-693-5324" ]
                 ++privacy:
                   type: string
                   description: |
@@ -579,7 +579,7 @@ components:
 
                     When set to `1`, privacy protection is enabled.
                     When set to `0`, privacy protect is not enabled.
-                  enum: ["0","1"]
+                  enum: [ "0", "1" ]
                 ++registered:
                   type: string
                   format: sql-date-time
@@ -595,7 +595,7 @@ components:
                   description: Supplementary list of registrant names. Derived from `registrant name` and `registrant organization`.
                   items:
                     type: string
-                  example: ["Zero Cool", "Titan Digital"]
+                  example: [ "Zero Cool", "Titan Digital" ]
                 ++registrar:
                   type: string
                   description: Name of the registrar managing the domain registration.
@@ -606,108 +606,101 @@ components:
                   pattern: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$'
                   description: |
                     Timestamp when the domain's WHOIS record was last updated.
-                    
+
                     Date and time in 'YYYY-MM-DD HH:MM:SS' format. Time is in 24-hour format with no timezone.
                     Normalizes the ISO date in `updated date`.
                   example: '2025-05-19 14:23:45'
               additionalProperties:
                 anyOf:
-                  - type: string
+                - type: string
+                  description: |
+                    Dynamic key-value pairs representing WHOIS data field names and values.
+
+                    Each `{key}` represents the name of a WHOIS data field. The `{value}` string contains the content retrieved for that field.
+                - type: array
+                  items:
+                    type: string
                     description: |
                       Dynamic key-value pairs representing WHOIS data field names and values.
 
-                      Each `{key}` represents the name of a WHOIS data field. The `{value}` string contains the content retrieved for that field.
-                  - type: array
-                    items:
-                      type: string
-                      description: |
-                        Dynamic key-value pairs representing WHOIS data field names and values.
-
-                        Each `{key}` represents the name of a WHOIS data field. The `{value}` array contains multiple pieces of content retrieved for that field.
+                      Each `{key}` represents the name of a WHOIS data field. The `{value}` array contains multiple pieces of content retrieved for that field.
                 example:
                   registrant organization: Titan Digital
                   name server:
-                    - ns1.example.com
-                    - ns2.example.com
+                  - ns1.example.com
+                  - ns2.example.com
               example:
                 ++abuse: abuse-complaints@squarespace.com
-                ++email: ["username1@organization1.org"]
+                ++email: [ "username1@organization1.org" ]
                 ++expires: '2025-05-19 14:23:45'
                 ++gdpr: "0"
-                ++phone: ["+1.646-693-5324"]
+                ++phone: [ "+1.646-693-5324" ]
                 ++privacy: "0"
                 ++registered: '2025-05-19 14:23:45'
-                ++registrant: ["Zero Cool", "Titan Digital"]
+                ++registrant: [ "Zero Cool", "Titan Digital" ]
                 ++registrar: Squarespace Domains II LLC
                 ++updated: '2025-05-19 14:23:45'
                 registrant organization: Titan Digital
                 name server:
-                  - ns1.example.com
-                  - ns2.example.com
+                - ns1.example.com
+                - ns2.example.com
             http:
               type: object
               description: "Data extracted from the HTTP response and headers. May include information about the result (example: status or code), server (example: server or x-powered-by), content (example: content-type or content-length), caching (example: cache-control or etag), security (example: strict-transport-security or x-frame-options), redirects (example: location or refresh), timing (example: date or age), or custom headers. Each key represents an HTTP field name (lowercased), and its corresponding value is the value retrieved for that field. Collected during active scanning."
               properties:
-                server:
-                  type: string
-                  description: xx
-                x-xss-protection:
-                  type: string
-                  description: xx
-                vary:
-                  type: string
-                  description: xx
-                x-content-type-options:
-                  type: string
-                  description: xx
-                connection:
-                  type: string
-                  description: xx
-                strict-transport-security:
-                  type: string
-                  description: xx
-                cache-control:
-                  type: string
-                  description: xx
-                content-encoding:
-                  type: string
-                  description: xx
-                keep-alive:
-                  type: string
-                  description: xx
                 ++code:
                   type: string
                   description: Code portion of the HTTP status code returned with the page response. It indicates the result of the HTTP request. Internal/extended metadata.
-                transfer-encoding:
-                  type: string
-                  description: xx
+                  example: "200"
                 ++status:
                   type: string
                   description: Status portion of the HTTP status code returned with the page response. It indicates the result of the HTTP request. Internal/extended metadata.
-                content-type:
-                  type: string
-                  description: xx
+                  example: "OK"
                 ++content-type:
                   type: string
                   description: MIME type of the page without parameters.
-                content-security-policy:
-                  type: string
-                  description: xx
+                  example: "text/html"
                 ++base:
                   type: string
                   description: Internal/extended metadata.
+                  example: "https://pulsedive.com/"
                 ++target:
                   type: string
                   description: Internal/extended metadata.
+                  example: [ "http://pulsedive.com/", "http://alvoportas.com.br/" ]
                 ++redirect:
                   type: string
                   description: Redirection target for the page. When defined in metadata, it often powers static site frameworks or CMS routing (e.g., Hugo, Next.js, Netlify). Can optionally include a status code. Internal/extended metadata.
-                date:
-                  type: string
-                  format: date-time
-                set-cookie:
-                  type: string
-                  description: xx
+                  example: [ "https://pulsedive.com/", "https://alvoportas.com.br" ]
+              additionalProperties:
+                anyOf:
+                - type: string
+                  description: |
+                    Dynamic key-value pairs representing http responses and headers, and their values.
+
+                    Each `{key}` represents the name of the http response. The `{value}` string contains the value retrieved for that response.
+                - type: array
+                  items:
+                    type: string
+                    description: |
+                      Dynamic key-value pairs representing http responses and headers, and their values.
+                example:
+                  Content-Type: "application/json"
+                  Set-Cookie:
+                  - "sessionid=abc123; Path=/; Secure"
+                  - "userid=42; Path=/; HttpOnly"
+              example:
+                ++code: "200"
+                ++status: "OK"
+                ++content-type: "text/html"
+                ++base: "https://pulsedive.com/"
+                ++target: [ "http://pulsedive.com/", "http://alvoportas.com.br/" ]
+                ++ redirect: [ "http://pulsedive.com/", "http://alvoportas.com.br/" ]
+                Content-Type: "application/json"
+                Set-Cookie:
+                - "sessionid=abc123; Path=/; Secure"
+                - "userid=42; Path=/; HttpOnly"
+
             ssl:
               type: object
               description: "Information extracted from the SSL/TLS certificate presented by the indicator during a handshake. May include information about ownership and identity (example: subject, domain), issuing authority (example: issuer), certificate lifecycle (example: expires, valid), and technical fingerprinting (example: version, fingerprint). Collected during active scanning."
@@ -715,78 +708,70 @@ components:
                 subject:
                   type: string
                   description: Entity to which the certificate was issued.
+                  example: [ "/CN=alvoportas.com.br", "/CN=pulsedive.com" ]
                 domain:
                   type: array
                   description: Primary domain name associated with the certificate, typically from the Common Name (CN) or Subject Alternative Name (SAN).
                   items:
                     type: string
-                    description: xx
+                    example: [ "alvoportas.com.br", "*.alvoportas.com.br", "pulsedive.com", "www.pulsedive.com" ]
                 version:
                   type: string
                   description: Version of the X.509 standard used by the certificate.
+                  example: "v3"
                 org:
                   type: string
                   description: Common Name (CN) of the specific certificate authority that signed the certificate, extracted from the issuer field.
+                  example: [ "WE1", "R11" ]
                 ip:
                   type: string
                   description: IP address of the server presenting the certificate, if resolved.
+                  example: [ "162.159.36.1", "2606:4700:4700::1001" ]
                 issuer:
                   type: string
                   description: Full Distinguished Name (DN) of the Certificate Authority (CA) that issued the certificate. Includes components like country (C), organization (O), and common name (CN).
+                  example: [ "/C=US/O=Google Trust Services/CN=WE1", "/C=US/O=Let's Encrypt/CN=R11" ]
                 expires:
                   type: string
                   format: date-time
                   description: Expiration date and time of the certificate. After this date, the certificate is no longer valid.
+                  example: [ "2025-05-30 12:34:06", "2025-08-01 06:07:16" ]
                 fingerprint:
                   type: string
                   description: Hash of the certificate used to uniquely identify the certificate and detect duplicates or known bad certs.
+                  example: "c47649d46db4cf725334942920ccb076b331a5a60dc3f58608bbf72512d222cd"
                 valid:
                   type: string
                   format: date-time
                   description: Date and time when the certificate becomes valid.
+                  example: [ "2025-03-01 11:36:31", "2025-05-03 06:07:17" ]
                 email:
                   type: string
                   description: Email address listed in the certificates subject or issuer fields.
+                  example: "username@pulsedive.com"
                 cipher:
                   type: array
                   description: Name of the cipher suite negotiated during the handshake. Useful for identifying the strength and type of encryption in use.
+                  example: "ECDHE-RSA-AES256-GCM-SHA384"
             dns:
               type: object
               description: Domain-related information for this indicator gathered from public DNS resolvers. Collected during active scanning.
-              properties:
-                mname:
-                  type: string
-                  description: Primary master nameserver for the domain's DNS zone, which is the authoritative source for DNS records.
-                ns:
-                  type: array
-                  description: Nameserver hostnames responsible for resolving the domain.
+              additionalProperties:
+                anyOf:
+                - type: string
+                  description: |
+                    Dynamic key-value pairs representing domain-related information.
+
+                    Each `{key}` represents the name of field. The `{value}` string contains the value retrieved for that field.
+                - type: array
                   items:
                     type: string
-                mx:
-                  type: array
-                  description: Mail exchange server hostname for the domain, indicating where email should be routed.
-                  items:
-                    type: string
-                a:
-                  type: array
-                  description: IPv4 addresses (A records) associated with the domain. These point to the servers hosting the domain.
-                txt:
-                  type: array
-                  description: Text records associated with the domain. Commonly used by email authentication protocols like SPF, DKIM, and DMARC to help receiving mail servers verify the legitimacy of messages.
-                  items:
-                    type: string
-                rname:
-                  type: string
-                  description: xx
-                soa:
-                  type: string
-                  description: Start of Authority (SOA) record for the domain. Contains administrative information about the zone, such as primary nameserver (mname) and serial number.
-                mame:
-                  type: string
-                  description: Email address of the responsible party for the DNS zone, typically formatted as a contact email for the domains DNS administrator or technical contact.
-                aaaa:
-                  type: array
-                  description: IPv6 addresses (AAAA records) associated with the domain.
+                    description: |
+                      Dynamic key-value pairs representing domain-related information.
+              example:
+                mx: [ "br.greedo1090.com.br", "alt3.aspmx.l.google.com" ]
+                soa: [ "raphaela.ns.cloudflare.com. dns.cloudflare.com. 2369171080 10000 2400 604800 1800", "ns1.digitalocean.com. hostmaster.pulsedive.com. 1746057817 10800 3600 604800 1800" ]
+
             meta:
               type: object
               description: Website metadata extracted from the HTML <head> tag. May include standard WC3 meta tags (for example, charset), SEO and crawling tags (for example, description, robots), social media platform meta tags (for example, twitter:card or og:card), or custom meta tags. Each key represents a meta tag type, and its corresponding value is the value retrieved from that meta tag.Collected during active scanning.
@@ -797,29 +782,29 @@ components:
                   example: "Threat Intelligence - Pulsedive"
               additionalProperties:
                 anyOf:
-                  - type: string
+                - type: string
+                  description: |
+                    Dynamic key-value pairs representing website metadata tags and values.
+
+                    Each `{key}` represents the name of metadata tag. The `{value}` string contains the value retrieved for that tag.
+                - type: array
+                  items:
+                    type: string
                     description: |
                       Dynamic key-value pairs representing website metadata tags and values.
 
-                      Each `{key}` represents the name of metadata tag. The `{value}` string contains the value retrieved for that tag.
-                  - type: array
-                    items:
-                      type: string
-                      description: |
-                        Dynamic key-value pairs representing website metadata tags and values.
-
-                        Each `{key}` represents the name of a metadata tag. The `{value}` array contains multiple values retrieved for that tag.
+                      Each `{key}` represents the name of a metadata tag. The `{value}` array contains multiple values retrieved for that tag.
                 example:
                   Content-Type: "text/html; charset=UTF-8"
                   "og:image":
-                    - "https://example.com/image1.jpg"
-                    - "https://example.com/image2.jpg"
+                  - "https://example.com/image1.jpg"
+                  - "https://example.com/image2.jpg"
               example:
                 ++title: "Threat Intelligence - Pulsedive"
                 Content-Type: "text/html; charset=UTF-8"
                 "og:image":
-                  - "https://example.com/image1.jpg"
-                  - "https://example.com/image2.jpg"
+                - "https://example.com/image1.jpg"
+                - "https://example.com/image2.jpg"
             banners:
               type: object
               description: |
@@ -828,37 +813,37 @@ components:
                 Each `{key}` matches a port number. The corresponding value may be a string or an array of strings, depending on how many banners were retrieved for that port.
               additionalProperties:
                 anyOf:
-                  - type: string
-                    description: |
-                      Each `{key}` matches a port number. The `{value}` string contains the banner retrieved for that port.
-                  - type: array
-                    items:
-                      type: string
-                    description: |
-                      Each `{key}` matches a port number. The `{value}` array contains multiple banners retrieved for that port.
+                - type: string
+                  description: |
+                    Each `{key}` matches a port number. The `{value}` string contains the banner retrieved for that port.
+                - type: array
+                  items:
+                    type: string
+                  description: |
+                    Each `{key}` matches a port number. The `{value}` array contains multiple banners retrieved for that port.
               example:
                 "22": "SSH-2.0-OpenSSH_7.4\n"
-                "143": ["* OK [CAPABILITY IMAP4rev1 STARTTLS LOGINDISABLED] Dovecot ready.\n", "* PREAUTH [CAPABILITY IMAP4rev1 SASL-IR] Logged in as user\n"]
+                "143": [ "* OK [CAPABILITY IMAP4rev1 STARTTLS LOGINDISABLED] Dovecot ready.\n", "* PREAUTH [CAPABILITY IMAP4rev1 SASL-IR] Logged in as user\n" ]
             cookies:
               type: object
               description: |
                 Mapping of HTTP cookies set by this indicator, collected during active scanning.
-                
+
                 Each `{key}` represents the name of a cookie. The corresponding value may be a string or an array of strings, depending on how many pieces of content were retrieved for that cookie.
               additionalProperties:
                 anyOf:
-                  - type: string
-                    description: |
-                      Each `{key}` represents the name of a cookie. The `{value}` string contains the content retrieved for that cookie.
-                  - type: array
-                    items:
-                      type: string
-                    description: |
-                      Each `{key}` represents the name of a cookie. The `{value}` array contains multiple pieces of content retrieved for that cookie.
+                - type: string
+                  description: |
+                    Each `{key}` represents the name of a cookie. The `{value}` string contains the content retrieved for that cookie.
+                - type: array
+                  items:
+                    type: string
+                  description: |
+                    Each `{key}` represents the name of a cookie. The `{value}` array contains multiple pieces of content retrieved for that cookie.
               example:
                 _ga: "GA1.1.1991921685.1744247816"
                 _ga_g550td8bzn: "GS1.1.1744247869.1.0.1744247869.0.0.0"
-                token: ["abc","def"]
+                token: [ "abc", "def" ]
             dom:
               type: object
               description: Data related to the Document Object Model (DOM) of this indicator. Collected during active scanning.
