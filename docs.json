@@ -17,7 +17,7 @@
     "dark": "#48484a"
   },
   "background": {
-    "decoration": "windows"
+    "decoration": "grid"
   },
   "favicon": "https://pulsedive.com/img/favicon.png",
   "navigation": {
