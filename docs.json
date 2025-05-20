@@ -124,8 +124,11 @@
       },
       {
         "tab": "API Reference",
-        "openapi": "api-reference/api.yaml",
         "groups": [
+          {
+            "group": "Endpoints",
+            "openapi": "api-reference/api.yaml"
+          },
           {
             "group": "Reference",
             "pages": [
