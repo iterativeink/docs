@@ -646,7 +646,12 @@ components:
                 - ns2.example.com
             http:
               type: object
-              description: "Data extracted from the HTTP response and headers. May include information about the result (example: status or code), server (example: server or x-powered-by), content (example: content-type or content-length), caching (example: cache-control or etag), security (example: strict-transport-security or x-frame-options), redirects (example: location or refresh), timing (example: date or age), or custom headers. Each key represents an HTTP field name (lowercased), and its corresponding value is the value retrieved for that field. Collected during active scanning."
+              description: |
+                Collection of data extracted from the HTTP response and headers, along with supplemental fields provided by Pulsedive (marked with a `++` prefix). Includes details about the result (example: status or code), server (example: server or x-powered-by), content (example: content-type or content-length), caching (example: cache-control or etag), security (example: strict-transport-security or x-frame-options), redirects (example: location or refresh), timing (example: date or age), or custom headers.
+
+                For standard HTTP response data, each key matches a field name from the record, and its value contains the corresponding content. If a field has multiple values, the values are listed as an array of strings.
+
+                Pulsedive's supplemental fields do not appear in the original source data. The values for these fields are derived from raw data or parsed from related sources to provide additional context.
               properties:
                 ++code:
                   type: string
@@ -756,6 +761,8 @@ components:
             dns:
               type: object
               description: Domain-related information for this indicator gathered from public DNS resolvers. Collected during active scanning.
+
+              Each `{key}` matches a port number. The corresponding value may be a string or an array of strings, depending on how many banners were retrieved for that port.
               additionalProperties:
                 anyOf:
                 - type: string
@@ -768,10 +775,11 @@ components:
                     type: string
                     description: |
                       Dynamic key-value pairs representing domain-related information.
-              example:
-                mx: [ "br.greedo1090.com.br", "alt3.aspmx.l.google.com" ]
-                soa: [ "raphaela.ns.cloudflare.com. dns.cloudflare.com. 2369171080 10000 2400 604800 1800", "ns1.digitalocean.com. hostmaster.pulsedive.com. 1746057817 10800 3600 604800 1800" ]
 
+                      Each `{key}` represents the name of a field. The `{value}` array contains multiple values retrieved for that field.
+              example:
+                mx: "alt3.aspmx.l.google.com"
+                ns: ["ns1.digitalocean.com", "ns2.digitalocean.com","ns3.digitalocean.com"]
             meta:
               type: object
               description: Website metadata extracted from the HTML <head> tag. May include standard WC3 meta tags (for example, charset), SEO and crawling tags (for example, description, robots), social media platform meta tags (for example, twitter:card or og:card), or custom meta tags. Each key represents a meta tag type, and its corresponding value is the value retrieved from that meta tag.Collected during active scanning.
